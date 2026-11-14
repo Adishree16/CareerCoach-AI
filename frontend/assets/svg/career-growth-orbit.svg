@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 740" fill="none">
+  <defs>
+    <radialGradient id="orbital-aura" cx="0" cy="0" r="1" gradientTransform="matrix(0 350 -390 0 447 372)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ead8ff" stop-opacity=".9"/><stop offset=".6" stop-color="#f5edff" stop-opacity=".52"/><stop offset="1" stop-color="#f5edff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sphere-fill" cx="0" cy="0" r="1" gradientTransform="matrix(105 310 -311 105 321 257)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".92"/><stop offset=".14" stop-color="#f5edff" stop-opacity=".86"/><stop offset=".4" stop-color="#a34dff" stop-opacity=".78"/><stop offset=".72" stop-color="#7028f5" stop-opacity=".9"/><stop offset="1" stop-color="#ead8ff" stop-opacity=".82"/>
+    </radialGradient>
+    <radialGradient id="sphere-depth" cx="0" cy="0" r="1" gradientTransform="matrix(0 238 -238 0 447 374)" gradientUnits="userSpaceOnUse">
+      <stop offset=".48" stop-color="#4b1ca8" stop-opacity="0"/><stop offset=".82" stop-color="#4b1ca8" stop-opacity=".08"/><stop offset="1" stop-color="#4b1ca8" stop-opacity=".42"/>
+    </radialGradient>
+    <radialGradient id="sphere-refraction" cx="0" cy="0" r="1" gradientTransform="matrix(112 226 -206 102 315 256)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".74"/><stop offset=".18" stop-color="#fff" stop-opacity=".26"/><stop offset=".42" stop-color="#fbe5f3" stop-opacity=".12"/><stop offset="1" stop-color="#ead8ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sphere-rim" x1="195" x2="661" y1="174" y2="565" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".98"/><stop offset=".18" stop-color="#fbe5f3" stop-opacity=".58"/><stop offset=".4" stop-color="#fff" stop-opacity=".88"/><stop offset=".64" stop-color="#ead8ff" stop-opacity=".5"/><stop offset=".82" stop-color="#ffeadc" stop-opacity=".62"/><stop offset="1" stop-color="#fff" stop-opacity=".96"/>
+    </linearGradient>
+    <linearGradient id="orbit-stroke" x1="98" x2="722" y1="306" y2="522" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff"/><stop offset=".22" stop-color="#fbe5f3"/><stop offset=".5" stop-color="#fff"/><stop offset=".76" stop-color="#a34dff"/><stop offset=".9" stop-color="#ffeadc"/><stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="arrow-stroke" x1="286" x2="614" y1="498" y2="299" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ead8ff" stop-opacity=".58"/><stop offset=".36" stop-color="#fff" stop-opacity=".96"/><stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="bar-fill" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#fff" stop-opacity=".92"/><stop offset="1" stop-color="#ddc7ff" stop-opacity=".24"/>
+    </linearGradient>
+    <radialGradient id="node-glow">
+      <stop stop-color="#fff"/><stop offset=".27" stop-color="#fffbd8"/><stop offset=".55" stop-color="#fffbd8" stop-opacity=".72"/><stop offset="1" stop-color="#fffbd8" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft-glow" x="-100%" y="-100%" width="300%" height="300%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="7" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="small-glow" x="-100%" y="-100%" width="300%" height="300%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="sphere-clip"><circle cx="447" cy="372" r="239"/></clipPath>
+  </defs>
+
+  <!-- Diffuse lavender light behind the glass -->
+  <ellipse cx="447" cy="374" rx="386" ry="345" fill="url(#orbital-aura)"/>
+
+  <!-- Far orbital paths sit behind the glass sphere -->
+  <g opacity=".86">
+    <ellipse cx="447" cy="372" rx="345" ry="115" stroke="#fff" stroke-opacity=".72" stroke-width="2.5" transform="rotate(-25 447 372)"/>
+    <ellipse cx="447" cy="372" rx="350" ry="126" stroke="#a34dff" stroke-opacity=".32" stroke-width="1.5" transform="rotate(-25 447 372)"/>
+    <ellipse cx="447" cy="372" rx="312" ry="104" stroke="#ffeadc" stroke-opacity=".58" stroke-width="2" transform="rotate(12 447 372)"/>
+  </g>
+
+  <!-- Orbital light nodes -->
+  <g filter="url(#soft-glow)">
+    <circle cx="760" cy="262" r="29" fill="url(#node-glow)"/><circle cx="760" cy="262" r="10" fill="#fff"/>
+    <circle cx="180" cy="530" r="30" fill="url(#node-glow)"/><circle cx="180" cy="530" r="10" fill="#fff"/>
+    <circle cx="617" cy="130" r="25" fill="url(#node-glow)"/><circle cx="617" cy="130" r="9" fill="#fff"/>
+  </g>
+
+  <!-- Glass sphere shell and luminous rim -->
+  <circle cx="447" cy="372" r="252" fill="#fff" fill-opacity=".07" stroke="#fff" stroke-opacity=".46" stroke-width="2"/>
+  <circle cx="447" cy="372" r="246" fill="#f5edff" fill-opacity=".12" stroke="url(#sphere-rim)" stroke-width="7"/>
+  <circle cx="447" cy="372" r="239" fill="url(#sphere-fill)" fill-opacity=".72" stroke="url(#sphere-rim)" stroke-width="9"/>
+  <circle cx="447" cy="372" r="232" fill="url(#sphere-depth)"/>
+  <circle cx="447" cy="372" r="232" fill="url(#sphere-refraction)" fill-opacity=".56"/>
+  <circle cx="447" cy="372" r="230" stroke="#fff" stroke-opacity=".38" stroke-width="2"/>
+
+  <g clip-path="url(#sphere-clip)">
+    <ellipse cx="405" cy="283" rx="157" ry="207" fill="#fff" fill-opacity=".11"/>
+    <path d="M248 287c52-110 127-156 223-145 82 9 139 57 177 143-52-56-93-76-156-74-88 3-163 49-244 121Z" fill="#fff" fill-opacity=".1"/>
+    <path d="M235 473c85 67 179 92 285 70 60-12 107-37 147-80-22 102-101 180-212 198-95 15-193-23-237-99-15-26-23-55-24-89Z" fill="#ead8ff" fill-opacity=".28"/>
+    <ellipse cx="337" cy="287" rx="68" ry="127" fill="#fff" fill-opacity=".12" transform="rotate(25 337 287)"/>
+
+    <!-- Rising translucent bars -->
+    <g stroke="#fff" stroke-opacity=".92" stroke-width="2">
+      <rect x="315" y="444" width="58" height="54" rx="7" fill="url(#bar-fill)"/>
+      <rect x="390" y="407" width="58" height="91" rx="7" fill="url(#bar-fill)"/>
+      <rect x="465" y="366" width="58" height="132" rx="7" fill="url(#bar-fill)"/>
+      <rect x="540" y="310" width="58" height="188" rx="7" fill="url(#bar-fill)"/>
+    </g>
+    <path d="M300 500h324" stroke="#fff" stroke-opacity=".48" stroke-width="2"/>
+
+    <!-- Rising path and arrow -->
+    <path d="M286 496c83-8 164-23 228-66 48-32 84-104 100-131" stroke="#fff" stroke-opacity=".18" stroke-width="12" stroke-linecap="round" filter="url(#small-glow)"/>
+    <path d="M286 496c83-8 164-23 228-66 48-32 84-104 100-131" stroke="url(#arrow-stroke)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M630 272 605 291 623 307Z" fill="#fff"/>
+
+    <!-- Inner refracted light -->
+    <path d="M239 339c18-73 61-133 123-167" stroke="#fff" stroke-opacity=".68" stroke-width="3" filter="url(#small-glow)"/>
+    <path d="M623 434c-11 48-43 89-86 114" stroke="#fbe5f3" stroke-opacity=".9" stroke-width="4" filter="url(#small-glow)"/>
+    <path d="M274 251c-10 20-18 39-24 58" stroke="#fff" stroke-width="24" stroke-linecap="round" stroke-opacity=".82" filter="url(#small-glow)"/>
+    <path d="M293 226c-3 5-7 10-10 15" stroke="#fff" stroke-width="13" stroke-linecap="round" stroke-opacity=".95"/>
+    <path d="M291 236c35-47 84-77 139-86" stroke="#fff" stroke-opacity=".54" stroke-width="6" stroke-linecap="round" filter="url(#small-glow)"/>
+    <path d="M299 249c20-25 39-39 62-49" stroke="#fff" stroke-opacity=".86" stroke-width="12" stroke-linecap="round" filter="url(#small-glow)"/>
+    <path d="M591 486c-23 36-52 59-88 73" stroke="#ffeadc" stroke-opacity=".62" stroke-width="8" stroke-linecap="round" filter="url(#small-glow)"/>
+  </g>
+
+  <!-- Near orbital paths cross in front of the sphere -->
+  <ellipse cx="447" cy="372" rx="344" ry="118" stroke="#fff" stroke-opacity=".76" stroke-width="6" transform="rotate(-25 447 372)"/>
+  <ellipse cx="447" cy="372" rx="344" ry="118" stroke="url(#orbit-stroke)" stroke-width="2.5" transform="rotate(-25 447 372)"/>
+  <ellipse cx="447" cy="372" rx="309" ry="105" stroke="#fff" stroke-opacity=".72" stroke-width="2.5" transform="rotate(12 447 372)"/>
+  <ellipse cx="447" cy="372" rx="315" ry="109" stroke="#ffeadc" stroke-opacity=".52" stroke-width="1.5" transform="rotate(12 447 372)"/>
+  <path d="M126 394c48-58 109-110 180-148" stroke="#fff" stroke-opacity=".78" stroke-width="3" stroke-linecap="round" filter="url(#small-glow)"/>
+  <path d="M573 260c60-34 111-46 161-39" stroke="#f5edff" stroke-opacity=".84" stroke-width="3" stroke-linecap="round" filter="url(#small-glow)"/>
+</svg>

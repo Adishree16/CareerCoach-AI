@@ -1,0 +1,102 @@
+/* CareerCoach AI tokens: shared palette, type, layout, surfaces, and motion. */
+:root {
+  color-scheme: light;
+
+  /* Brand and semantic colors */
+  --color-primary: #7028f5;
+  --color-primary-hover: #5b18d4;
+  --color-violet-secondary: #a34dff;
+  --color-purple-deep: #4b1ca8;
+  --color-text: #101d64;
+  --color-text-secondary: #39466f;
+  --color-text-muted: #68718f;
+  --color-on-primary: #ffffff;
+  --color-bg: #fff9f8;
+  --color-bg-secondary: #f8f1ff;
+  --color-surface: #ffffff;
+  --color-surface-muted: #fcf8ff;
+  --color-lavender: #ead8ff;
+  --color-lavender-pale: #f5edff;
+  --color-blush: #fbe5f3;
+  --color-peach: #ffeadc;
+  --color-ivory: #fffaf2;
+  --color-border: #e6dbf2;
+  --color-border-strong: #c9a8f5;
+  --color-success: #287a58;
+  --color-warning: #9a6413;
+  --color-error: #b33d46;
+  --color-info: #3268a8;
+
+  /* System font stacks: no runtime font download required. */
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-heading: "Segoe UI", Arial, sans-serif;
+  --font-body: "Segoe UI", Arial, sans-serif;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --text-xs: .75rem;
+  --text-sm: .875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-display: clamp(2.5rem, 5vw, 4.5rem);
+  --text-label: .875rem;
+  --text-meta: .75rem;
+  --line-tight: 1.12;
+  --line-heading: 1.2;
+  --line-normal: 1.55;
+  --tracking-tight: -.025em;
+  --tracking-normal: 0;
+
+  /* Spacing and responsive layout */
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --grid-gap: clamp(1rem, 2.5vw, 2rem);
+  --section-space: clamp(3.5rem, 8vw, 7rem);
+  --container-max: 82rem;
+  --container-reading: 48rem;
+  --page-gutter: clamp(1.25rem, 5.5vw, 5.5rem);
+  --breakpoint-mobile: 30rem;
+  --breakpoint-tablet: 48rem;
+  --breakpoint-desktop: 64rem;
+  --breakpoint-wide: 90rem;
+
+  /* Shape, borders, elevation, glass, gradients, and focus */
+  --radius-xs: .375rem;
+  --radius-sm: .625rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-pill: 999px;
+  --border-width: 1px;
+  --border-width-active: 2px;
+  --shadow-sm: 0 4px 16px rgb(53 31 95 / 7%);
+  --shadow-md: 0 14px 36px rgb(53 31 95 / 11%);
+  --shadow-lg: 0 24px 64px rgb(62 27 130 / 16%);
+  --glass-bg: rgb(255 255 255 / 72%);
+  --glass-bg-strong: rgb(255 255 255 / 86%);
+  --glass-border: rgb(255 255 255 / 78%);
+  --glass-blur: 18px;
+  --gradient-primary: linear-gradient(115deg, #8d23ed 0%, #7028f5 48%, #4b1ca8 100%);
+  --gradient-atmosphere: linear-gradient(115deg, #fff7f5 0%, #f9efff 54%, #e8dcff 100%);
+  --gradient-accent: linear-gradient(110deg, #7044ff 0%, #cf39a6 100%);
+  --shadow-glow: 0 0 28px rgb(142 70 255 / 25%);
+  --focus-ring: 0 0 0 3px rgb(112 40 245 / 28%);
+
+  /* Motion */
+  --transition-fast: 160ms ease;
+  --transition-standard: 240ms ease;
+  --transition-gentle: 360ms ease;
+}

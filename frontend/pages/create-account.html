@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f1e3ff">
+  <title>Create Your Account — CareerCoach AI</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/pages/create-account.css">
+  <script type="module" src="../js/pages/create-account.js"></script>
+</head>
+<body class="create-account-page">
+  <main class="account-card" aria-labelledby="page-title">
+    <div class="card-shine" aria-hidden="true"></div>
+    <header class="account-header">
+      <a class="account-brand" href="../index.html" aria-label="CareerCoach AI home">
+        <svg class="brand-bars" viewBox="0 0 44 44" aria-hidden="true"><rect x="2" y="27" width="12" height="15" rx="3"/><rect x="17" y="16" width="12" height="26" rx="3"/><rect x="32" y="3" width="12" height="39" rx="3"/></svg>
+        <span>CareerCoach AI</span>
+      </a>
+      <div class="heading-wrap">
+        <span class="sparkle sparkle-left" aria-hidden="true">✦</span>
+        <h1 id="page-title">Create Your Account</h1>
+        <span class="sparkle sparkle-right" aria-hidden="true">✦</span>
+      </div>
+      <p class="account-intro">Verify your email with OTP and set a password<br class="desktop-break"> to get started on your career journey.</p>
+    </header>
+
+    <form id="account-form" novalidate>
+      <div class="stepper">
+        <section class="step-section email-step" aria-labelledby="email-step-title">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h2 id="email-step-title">Email Verification</h2>
+            <label for="email">Email Address <span aria-hidden="true">*</span></label>
+            <div class="field-wrap">
+              <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="Enter your email address" required>
+            </div>
+            <div class="send-row"><button class="send-button" id="send-otp" type="button" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13"/></svg>Send OTP</button></div>
+            <div class="otp-block" id="otp-block" hidden>
+              <div class="otp-heading"><label for="otp-1">Enter OTP <span aria-hidden="true">*</span></label><span class="resend-label">Resend OTP in <button id="resend-otp" type="button" disabled>00:30</button></span></div>
+              <div class="otp-inputs" role="group" aria-label="Six digit verification code">
+                <input id="otp-1" name="otp-1" inputmode="numeric" autocomplete="one-time-code" maxlength="1" aria-label="OTP digit 1" required>
+                <input name="otp-2" inputmode="numeric" maxlength="1" aria-label="OTP digit 2" required>
+                <input name="otp-3" inputmode="numeric" maxlength="1" aria-label="OTP digit 3" required>
+                <input name="otp-4" inputmode="numeric" maxlength="1" aria-label="OTP digit 4" required>
+                <input name="otp-5" inputmode="numeric" maxlength="1" aria-label="OTP digit 5" required>
+                <input name="otp-6" inputmode="numeric" maxlength="1" aria-label="OTP digit 6" required>
+              </div>
+              <div class="send-row verify-otp-row"><button class="send-button" id="verify-otp" type="button" disabled>Verify OTP</button></div>
+            </div>
+            <p class="form-message" id="otp-message" role="status" aria-live="polite"></p>
+          </div>
+        </section>
+
+        <section class="step-section password-step" aria-labelledby="password-step-title">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h2 id="password-step-title">Set Password</h2>
+            <label for="password">Password <span aria-hidden="true">*</span></label>
+            <div class="field-wrap password-wrap">
+              <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></svg>
+              <input id="password" name="password" type="password" autocomplete="new-password" placeholder="Create a password" required>
+              <button class="visibility-toggle" type="button" aria-label="Show password" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><path class="eye-slash" d="m3 3 18 18"/></svg></button>
+            </div>
+            <div class="password-errors" id="password-errors" aria-live="polite" hidden>
+              <p data-rule-message="length">Password must contain at least 8 characters.</p>
+              <p data-rule-message="uppercase">Password must contain at least one uppercase letter.</p>
+              <p data-rule-message="lowercase">Password must contain at least one lowercase letter.</p>
+              <p data-rule-message="number">Password must contain at least one number.</p>
+              <p data-rule-message="special">Password must contain at least one special character.</p>
+            </div>
+            <label for="confirm-password">Confirm Password <span aria-hidden="true">*</span></label>
+            <div class="field-wrap password-wrap">
+              <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></svg>
+              <input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password" placeholder="Confirm your password" required>
+              <button class="visibility-toggle" type="button" aria-label="Show confirm password" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><path class="eye-slash" d="m3 3 18 18"/></svg></button>
+            </div>
+            <p class="form-message password-message" id="password-message" role="status" aria-live="polite"></p>
+          </div>
+        </section>
+      </div>
+      <button class="create-button" id="create-account-submit" type="submit" disabled>Create Account &amp; Continue <span aria-hidden="true">⟶</span></button>
+      <p class="form-message submit-message" id="submit-message" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+</body>
+</html>

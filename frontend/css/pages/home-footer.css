@@ -1,0 +1,95 @@
+/* Minimal homepage footer, styled with the shared CareerCoach AI tokens. */
+.home-footer {
+  margin-top: 4.25rem;
+  padding: 3.75rem var(--page-gutter) 1.75rem;
+  background: linear-gradient(
+    115deg,
+    color-mix(in srgb, var(--color-bg) 78%, var(--color-bg-secondary)),
+    color-mix(in srgb, var(--color-bg) 77%, var(--color-blush)) 54%,
+    color-mix(in srgb, var(--color-bg) 72%, var(--color-lavender-pale))
+  );
+  color: var(--color-text);
+  text-align: center;
+}
+
+.home-footer-inner {
+  width: min(100%, 94rem);
+  margin-inline: auto;
+}
+
+.home-footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 2.2vw, 2.25rem);
+  font-weight: var(--weight-bold);
+  letter-spacing: -.04em;
+  line-height: 1.08;
+}
+
+.home-footer-mark {
+  width: 3rem;
+  height: auto;
+  flex: 0 0 auto;
+}
+
+.home-footer-tagline {
+  display: inline-block;
+  margin: .75rem 0 0;
+  padding: .4rem 1.25rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-lavender) 58%, var(--color-blush));
+  font-family: var(--font-heading);
+  font-size: clamp(1.125rem, 1.25vw, 1.25rem);
+  font-style: italic;
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+}
+
+.home-footer-tagline span {
+  color: var(--color-primary);
+  background: var(--gradient-accent);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home-footer-description {
+  margin: .75rem 0 0;
+  color: var(--color-text);
+  font-size: clamp(.9375rem, 1vw, 1rem);
+  line-height: var(--line-normal);
+}
+
+.home-footer-divider {
+  width: min(100%, 94rem);
+  height: 2px;
+  margin: 1.5rem auto 0;
+  background: color-mix(in srgb, var(--color-border-strong) 78%, transparent);
+}
+
+.home-footer-copyright {
+  margin: 1rem 0 0;
+  color: var(--color-text);
+  font-size: .9rem;
+  line-height: var(--line-normal);
+}
+
+@media (max-width: 48rem) {
+  .home-footer { padding-bottom: 1.75rem; }
+  .home-footer-brand { gap: .65rem; font-size: clamp(1.8rem, 4.5vw, 2.125rem); }
+  .home-footer-mark { width: 3rem; }
+  .home-footer-tagline { max-width: 100%; padding: .4rem 1rem; font-size: clamp(1.125rem, 4vw, 1.25rem); }
+  .home-footer-description { max-width: 38rem; margin-inline: auto; font-size: 1rem; }
+  .home-footer-divider { margin-top: 1.25rem; }
+  .home-footer-copyright { font-size: .9rem; }
+}
+
+@media (max-width: 30rem) {
+  .home-footer-brand { gap: .5rem; font-size: clamp(1.7rem, 7vw, 2rem); }
+  .home-footer-mark { width: 2.75rem; }
+  .home-footer-tagline { white-space: normal; }
+}

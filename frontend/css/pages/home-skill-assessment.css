@@ -1,0 +1,174 @@
+/* Section 3: Skill Assessment. Scoped to the homepage section. */
+.skill-assessment {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: var(--space-8) var(--space-12);
+  color: var(--color-text);
+}
+
+.skill-assessment-container {
+  position: relative;
+  z-index: 1;
+  width: min(calc(100% - 2 * var(--page-gutter)), 94rem);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.skill-assessment-heading { display: grid; justify-items: center; }
+
+.skill-assessment-badge {
+  display: inline-flex;
+  min-height: 4.25rem;
+  align-items: center;
+  gap: var(--space-4);
+  margin: 0;
+  padding: .75rem 1.5rem;
+  border: var(--border-width) solid color-mix(in srgb, var(--glass-border) 86%, var(--color-lavender));
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-lavender) 66%, var(--color-surface));
+  color: var(--color-text);
+  font-size: clamp(1.2rem, 1.55vw, 1.5rem);
+  font-weight: var(--weight-bold);
+}
+
+.skill-assessment-badge svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.6;
+}
+
+.skill-assessment-heading h2 {
+  margin: var(--space-6) 0 0;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: clamp(2.125rem, 3.4vw, 3.4rem);
+  font-weight: var(--weight-bold);
+  letter-spacing: -.035em;
+  line-height: 1.08;
+}
+
+.skill-assessment-heading h2 > span,
+.skill-assessment-heading h2 > em { display: block; }
+
+.skill-assessment-heading h2 em {
+  background: var(--gradient-accent);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: var(--weight-bold);
+}
+
+.skill-assessment-description {
+  max-width: 80rem;
+  margin: var(--space-4) 0 0;
+  color: var(--color-text);
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  line-height: 1.5;
+}
+
+.skill-assessment-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.1rem, 1.3vw, 1.3rem);
+  margin-top: clamp(2.3rem, 2.7vw, 2.75rem);
+}
+
+.skill-assessment-card {
+  display: flex;
+  min-width: 0;
+  min-height: 18rem;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(1.25rem, 1.7vw, 1.7rem) clamp(1.1rem, 1.5vw, 1.5rem);
+  border: var(--border-width-active) solid color-mix(in srgb, var(--color-lavender) 78%, var(--glass-border));
+  border-radius: clamp(1.75rem, 2.5vw, 2.5rem);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--glass-bg-strong) 86%, var(--color-blush)), color-mix(in srgb, var(--glass-bg) 90%, var(--color-lavender-pale)));
+  box-shadow: var(--shadow-sm), inset 0 1px 4px color-mix(in srgb, var(--color-surface) 92%, transparent);
+  text-align: center;
+}
+
+.skill-assessment-icon {
+  display: grid;
+  width: 7.4rem;
+  height: 5.75rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--color-lavender) 78%, var(--color-surface));
+}
+
+.skill-assessment-icon svg {
+  width: 4.45rem;
+  height: 4.45rem;
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3.4;
+}
+
+.skill-assessment-card h3 {
+  margin: .85rem 0 0;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.25;
+}
+
+.skill-assessment-card p {
+  max-width: 24rem;
+  margin: .65rem 0 0;
+  color: var(--color-text);
+  font-size: clamp(.95rem, 1.25vw, 1.2rem);
+  line-height: 1.45;
+}
+
+.skill-assessment-cta {
+  min-width: min(26rem, 100%);
+  min-height: 4rem;
+  margin-top: clamp(1.9rem, 2.4vw, 2.55rem);
+  gap: var(--space-4);
+  font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+  box-shadow: var(--shadow-md);
+}
+
+.skill-assessment-cta span { font-size: 1.35em; font-weight: var(--weight-regular); line-height: 1; }
+
+@media (max-width: 72rem) {
+  .skill-assessment { padding-block: var(--space-8) var(--space-10); }
+  .skill-assessment-heading h2 { font-size: clamp(2.04rem, 4.25vw, 2.975rem); }
+  .skill-assessment-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .skill-assessment-card:last-child { width: min(100%, 36rem); grid-column: 1 / -1; justify-self: center; }
+}
+
+@media (max-width: 48rem) {
+  .skill-assessment { padding-block: var(--space-6) var(--space-8); }
+  .skill-assessment-badge { min-height: 3.5rem; gap: var(--space-3); padding: .5rem 1.1rem; font-size: var(--text-lg); }
+  .skill-assessment-badge svg { width: 2rem; height: 2rem; }
+  .skill-assessment-heading h2 { margin-top: var(--space-5); font-size: clamp(1.9rem, 6.8vw, 2.76rem); }
+  .skill-assessment-description { max-width: 38rem; font-size: 1.05rem; }
+  .skill-assessment-cards { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); margin-top: var(--space-8); }
+  .skill-assessment-card, .skill-assessment-card:last-child { width: 100%; min-height: 0; grid-column: auto; padding: var(--space-5) var(--space-4); }
+  .skill-assessment-icon { width: 6rem; height: 4.7rem; }
+  .skill-assessment-icon svg { width: 3.8rem; height: 3.8rem; }
+  .skill-assessment-card h3 { font-size: 1.17rem; }
+  .skill-assessment-card p { font-size: .95rem; }
+  .skill-assessment-cta { width: min(100%, 26rem); min-height: 3.35rem; margin-top: 1.7rem; font-size: 1.05rem; }
+}
+
+@media (max-width: 30rem) {
+  .skill-assessment-container { width: min(calc(100% - 2 * var(--space-5)), 40rem); }
+  .skill-assessment-heading h2 { font-size: clamp(1.7rem, 7.65vw, 2.25rem); }
+  .skill-assessment-heading h2 em { display: block; }
+  .skill-assessment-description { font-size: .95rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-assessment *, .skill-assessment *::before, .skill-assessment *::after { scroll-behavior: auto; animation-duration: .01ms; transition-duration: .01ms; }
+}
