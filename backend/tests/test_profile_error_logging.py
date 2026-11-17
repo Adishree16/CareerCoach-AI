@@ -5,7 +5,7 @@ from uuid import uuid4
 from unittest.mock import patch
 
 from fastapi import HTTPException
-from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.exc import ProgrammingError, SQLAlchemyError
 
 from app.api.routes import profiles as profile_routes
 from app.schemas.auth import AuthenticatedUser
@@ -29,6 +29,13 @@ class FailingSession:
         raise self.error
 
 
+class FakePsycopgError(Exception):
+    def __init__(self, message, *, sqlstate=None, pgcode=None):
+        super().__init__(message)
+        self.sqlstate = sqlstate
+        self.pgcode = pgcode
+
+
 class ProfileErrorLoggingTests(unittest.TestCase):
     def setUp(self):
         self.sensitive_marker = (
@@ -41,6 +48,7 @@ class ProfileErrorLoggingTests(unittest.TestCase):
         self.assertNotIn("database-password-marker", log_output)
         self.assertNotIn("postgresql://", log_output)
         self.assertIn("exception_type=", log_output)
+        self.assertIn("sqlstate=", log_output)
         self.assertIn("details=redacted", log_output)
 
     def test_get_profile_logs_redacted_traceback_and_preserves_cause(self):
@@ -62,6 +70,38 @@ class ProfileErrorLoggingTests(unittest.TestCase):
         self.assertIs(raised.exception.__cause__, db_error)
         self._assert_redacted_log("\n".join(captured.output))
         self.assertIn("profile.save.persistence_failed", "\n".join(captured.output))
+
+    def test_postgres_sqlstate_is_logged_without_dbapi_message_sql_or_parameters(self):
+        dbapi_error = FakePsycopgError(self.sensitive_marker, sqlstate="42601")
+        db_error = ProgrammingError(
+            "SELECT sensitive_profile_column FROM profiles",
+            {"profile_value": self.sensitive_marker},
+            dbapi_error,
+        )
+        with self.assertLogs("app.services.profiles", level="ERROR") as captured:
+            with self.assertRaises(profile_service.ProfilePersistenceError):
+                profile_service.get_profile(FailingSession(db_error), uuid4())
+
+        output = "\n".join(captured.output)
+        self._assert_redacted_log(output)
+        self.assertIn("exception_type=ProgrammingError", output)
+        self.assertIn("sqlstate=42601", output)
+        self.assertNotIn("SELECT sensitive_profile_column", output)
+        self.assertNotIn("profile_value", output)
+
+    def test_sqlstate_uses_safe_pgcode_fallback_and_rejects_untrusted_values(self):
+        self.assertEqual(
+            profile_service._extract_sqlstate(
+                FakePsycopgError("redacted", pgcode="42P01")
+            ),
+            "42P01",
+        )
+        self.assertEqual(
+            profile_service._extract_sqlstate(
+                FakePsycopgError("redacted", sqlstate="42P01 private-data")
+            ),
+            "unavailable",
+        )
 
     def test_get_route_logs_unexpected_error_without_exposing_exception_text(self):
         error = RuntimeError(self.sensitive_marker)

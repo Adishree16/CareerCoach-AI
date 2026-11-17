@@ -1,6 +1,7 @@
 """Create, replace, and retrieve authenticated users' profile snapshots."""
 
 import logging
+import re
 from datetime import datetime, timezone
 from uuid import UUID
 
@@ -32,6 +33,25 @@ class ProfilePersistenceError(RuntimeError):
 
 
 logger = logging.getLogger(__name__)
+_SQLSTATE_PATTERN = re.compile(r"[0-9A-Z]{5}\Z")
+
+
+def _extract_sqlstate(error: Exception) -> str:
+    """Return only a syntactically valid PostgreSQL SQLSTATE, or a fixed fallback."""
+    original = getattr(error, "orig", None)
+    if original is None:
+        original = error
+
+    for attribute in ("sqlstate", "pgcode"):
+        try:
+            candidate = getattr(original, attribute, None)
+        except Exception:
+            continue
+        if isinstance(candidate, str):
+            normalized = candidate.upper()
+            if _SQLSTATE_PATTERN.fullmatch(normalized):
+                return normalized
+    return "unavailable"
 
 
 def _log_redacted_exception(
@@ -40,9 +60,10 @@ def _log_redacted_exception(
     """Log the traceback and exception class without its potentially sensitive text."""
     redacted_error = RuntimeError("Exception details redacted.")
     target_logger.exception(
-        "%s exception_type=%s details=redacted",
+        "%s exception_type=%s sqlstate=%s details=redacted",
         event_code,
         type(error).__name__,
+        _extract_sqlstate(error),
         exc_info=(type(error), redacted_error, error.__traceback__),
     )
 
