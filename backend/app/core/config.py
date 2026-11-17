@@ -26,6 +26,11 @@ class Settings(BaseSettings):
 
     @property
     def cors_origins(self) -> list[str]:
-        return [origin.strip() for origin in self.frontend_origins.split(",") if origin.strip()]
+        origins = [origin.strip() for origin in self.frontend_origins.split(",") if origin.strip()]
+        if any("*" in origin for origin in origins):
+            raise ValueError(
+                "FRONTEND_ORIGINS must list explicit origins when credentialed requests are enabled."
+            )
+        return origins
 
 settings = Settings()

@@ -4,12 +4,14 @@ import asyncio
 import json
 import time
 import unittest
+from unittest.mock import patch
 
 from fastapi import HTTPException, Response
 import httpx
 from starlette.requests import Request
 
 from app.api.routes import auth
+from app.core.config import Settings
 from app.core.rate_limit import RateLimitService, RefreshAttempt, REFRESH_REUSE_INTERVAL_SECONDS
 from app.schemas.auth import LoginRequest, RegisterRequest
 from app.main import app as fastapi_app
@@ -138,6 +140,63 @@ def make_request():
         "server": ("localhost", 8000),
     }
     return Request(scope)
+
+
+class AuthCookieConfigurationTests(unittest.TestCase):
+    @staticmethod
+    def _set_cookie_headers(response):
+        return [value.decode("latin-1") for name, value in response.raw_headers if name.lower() == b"set-cookie"]
+
+    def test_production_auth_cookies_are_cross_site_compatible(self):
+        response = Response()
+        with patch.object(auth.settings, "app_env", "production"):
+            auth._set_refresh_response_cookies(
+                response,
+                {
+                    "access_token": "synthetic-access-token",
+                    "access_expires_at": time.time() + 3600,
+                    "csrf_token": "synthetic-csrf-token",
+                },
+                "synthetic-session-id",
+                time.time() + 3600,
+            )
+
+        cookies = self._set_cookie_headers(response)
+        self.assertEqual(len(cookies), 4)
+        for cookie_name in (
+            auth.ACCESS_COOKIE,
+            auth.SESSION_COOKIE,
+            auth.REFRESH_COOKIE,
+            auth.CSRF_COOKIE,
+        ):
+            header = next(item for item in cookies if item.startswith(cookie_name + "="))
+            self.assertIn("secure", header.lower())
+            self.assertIn("samesite=none", header.lower())
+            if cookie_name == auth.CSRF_COOKIE:
+                self.assertNotIn("httponly", header.lower())
+            else:
+                self.assertIn("httponly", header.lower())
+
+    def test_local_auth_cookies_keep_development_attributes(self):
+        with patch.object(auth.settings, "app_env", "development"):
+            options = auth._cookie_options()
+        self.assertFalse(options["secure"])
+        self.assertEqual(options["samesite"], "lax")
+        self.assertTrue(options["httponly"])
+
+    def test_cors_uses_explicit_credentialed_origins(self):
+        from starlette.middleware.cors import CORSMiddleware
+
+        cors = next(item for item in fastapi_app.user_middleware if item.cls is CORSMiddleware)
+        self.assertTrue(cors.kwargs["allow_credentials"])
+        self.assertTrue(cors.kwargs["allow_origins"])
+        self.assertNotIn("*", cors.kwargs["allow_origins"])
+        self.assertEqual(
+            Settings(frontend_origins="https://careercoach.example.netlify.app").cors_origins,
+            ["https://careercoach.example.netlify.app"],
+        )
+        with self.assertRaises(ValueError):
+            Settings(frontend_origins="*").cors_origins
 
 
 class AuthRateLimitRouteTests(unittest.IsolatedAsyncioTestCase):

@@ -39,10 +39,11 @@ CSRF_HEADER = "X-CSRF-Token"
 
 
 def _cookie_options() -> dict[str, str | bool]:
+    production = settings.app_env.casefold() not in {"development", "dev", "local", "test"}
     return {
         "httponly": True,
-        "secure": settings.app_env.casefold() not in {"development", "dev", "local", "test"},
-        "samesite": "lax",
+        "secure": production,
+        "samesite": "none" if production else "lax",
         "path": "/api",
     }
 
