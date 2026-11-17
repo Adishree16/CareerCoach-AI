@@ -1,3 +1,4 @@
+import logging
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -10,11 +11,13 @@ from app.schemas.profiles import ProfileCreateRequest, ProfileResponse
 from app.services.profiles import (
     ProfileConflictError,
     ProfilePersistenceError,
+    _log_redacted_exception,
     get_profile,
     save_profile,
 )
 
 router = APIRouter(prefix="/profiles", tags=["profiles"])
+logger = logging.getLogger(__name__)
 
 
 def _verified_user_id(current_user: AuthenticatedUser) -> UUID:
@@ -36,16 +39,17 @@ def read_my_profile(
     user_id = _verified_user_id(current_user)
     try:
         profile = get_profile(db, user_id)
-    except ProfilePersistenceError:
+    except ProfilePersistenceError as exc:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Profile data could not be retrieved.",
-        ) from None
-    except Exception:
+        ) from exc
+    except Exception as exc:
+        _log_redacted_exception(logger, "profile.route.get.unexpected_failed", exc)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Profile data could not be retrieved.",
-        ) from None
+        ) from exc
 
     if profile is None:
         raise HTTPException(
@@ -73,13 +77,14 @@ def save_my_profile(
             status_code=status.HTTP_409_CONFLICT,
             detail="Profile data could not be saved because of a conflict. Please retry.",
         ) from None
-    except ProfilePersistenceError:
+    except ProfilePersistenceError as exc:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Profile data could not be saved.",
-        ) from None
-    except Exception:
+        ) from exc
+    except Exception as exc:
+        _log_redacted_exception(logger, "profile.route.put.unexpected_failed", exc)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Profile data could not be saved.",
-        ) from None
+        ) from exc

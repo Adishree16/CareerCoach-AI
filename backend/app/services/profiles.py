@@ -1,5 +1,6 @@
 """Create, replace, and retrieve authenticated users' profile snapshots."""
 
+import logging
 from datetime import datetime, timezone
 from uuid import UUID
 
@@ -28,6 +29,22 @@ class ProfileConflictError(RuntimeError):
 
 class ProfilePersistenceError(RuntimeError):
     """Raised when profile data cannot be read or persisted safely."""
+
+
+logger = logging.getLogger(__name__)
+
+
+def _log_redacted_exception(
+    target_logger: logging.Logger, event_code: str, error: Exception
+) -> None:
+    """Log the traceback and exception class without its potentially sensitive text."""
+    redacted_error = RuntimeError("Exception details redacted.")
+    target_logger.exception(
+        "%s exception_type=%s details=redacted",
+        event_code,
+        type(error).__name__,
+        exc_info=(type(error), redacted_error, error.__traceback__),
+    )
 
 
 EDUCATION_LEVEL_LABELS = {
@@ -395,8 +412,9 @@ def save_profile(
             raise ProfileConflictError(
                 "A concurrent profile save conflicted. Please retry the request."
             ) from None
-        except SQLAlchemyError:
-            raise ProfilePersistenceError("Profile data could not be saved.") from None
+        except SQLAlchemyError as exc:
+            _log_redacted_exception(logger, "profile.save.persistence_failed", exc)
+            raise ProfilePersistenceError("Profile data could not be saved.") from exc
 
     raise ProfileConflictError("A concurrent profile save conflicted. Please retry the request.")
 
@@ -410,5 +428,6 @@ def get_profile(
     try:
         profile = db.scalar(_profile_query(user_id))
         return _to_profile_response(profile) if profile is not None else None
-    except SQLAlchemyError:
-        raise ProfilePersistenceError("Profile data could not be retrieved.") from None
+    except SQLAlchemyError as exc:
+        _log_redacted_exception(logger, "profile.get.persistence_failed", exc)
+        raise ProfilePersistenceError("Profile data could not be retrieved.") from exc
