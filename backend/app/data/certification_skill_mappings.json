@@ -1,0 +1,737 @@
+{
+  "catalogue_name": "CareerCoach AI Certification Skill Mappings",
+  "version": "1.0.0",
+  "verification_date": "2026-11-16",
+  "matching_policy": {
+    "profile_fields": [
+      "name",
+      "organization"
+    ],
+    "comparison": "Exact normalized name and organization; no fuzzy issuer matching.",
+    "scoring_policy": "Only records with mapping_status=verified may be used as evidence. needs_review records are non-scorable. A role mapping may use only skill IDs that exist on that role in career_knowledge_base.json."
+  },
+  "certifications": [
+    {
+      "id": "aws_solutions_architect_associate_saa_c03",
+      "name": "AWS Certified Solutions Architect - Associate",
+      "issuing_organization": "Amazon Web Services (AWS)",
+      "credential_type": "industry_certification",
+      "platform": null,
+      "exam_code": "SAA-C03",
+      "version": "SAA-C03",
+      "profile_match": {
+        "name": "AWS Certified Solutions Architect - Associate",
+        "organization": "Amazon Web Services (AWS)"
+      },
+      "mapping_status": "needs_review",
+      "scoring_eligible": false,
+      "mapping_status_reason": "The profile stores neither exam code nor award date. The guide is specific to SAA-C03, while the profile title alone cannot establish which exam version the user passed.",
+      "role_mappings": [
+        {
+          "role_id": "solutions_architect",
+          "skill_ids": [
+            "aws_architecture",
+            "cloud_architecture_frameworks",
+            "security_architecture",
+            "resilience_and_scalability_design"
+          ],
+          "source_url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03.html",
+          "source_section": "Exam content; Content Domain 1: Design Secure Architectures; Content Domain 2: Design Resilient Architectures; Content Domain 3: Design High-Performing Architectures; Content Domain 4: Design Cost-Optimized Architectures",
+          "objective_summary": "SAA-C03 explicitly evaluates AWS solution architecture and the design of secure, resilient, high-performing, and cost-optimized solutions. The catalogue limits this mapping to the corresponding existing Solutions Architect skills.",
+          "verification_date": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "google_cloud_associate_cloud_engineer",
+      "name": "Associate Cloud Engineer",
+      "issuing_organization": "Google Cloud",
+      "credential_type": "industry_certification",
+      "platform": null,
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Associate Cloud Engineer",
+        "organization": "Google Cloud"
+      },
+      "mapping_status": "verified",
+      "scoring_eligible": true,
+      "mapping_status_reason": "The official guide identifies the credential by this title and does not identify a distinct exam-code/version variant in the reviewed guide. Mapping is restricted to its published deployment, networking, operations, access, and security objectives.",
+      "role_mappings": [
+        {
+          "role_id": "cloud_engineer",
+          "skill_ids": [
+            "google_cloud",
+            "identity_and_access_management",
+            "virtual_networking",
+            "observability",
+            "kubernetes",
+            "infrastructure_as_code",
+            "cloud_provider_consoles_and_clis",
+            "cloud_logging_services"
+          ],
+          "source_url": "https://cloud.google.com/learn/certification/guides/cloud-engineer",
+          "source_section": "Section 1: Setting up a cloud solution environment; Section 2: Planning and configuring a cloud solution; Section 3: Deploying and implementing a cloud solution; Section 4: Ensuring successful operation of a cloud solution; Section 5: Configuring access and security",
+          "objective_summary": "The guide covers Google Cloud project setup and IAM, compute and storage selection, VPC and firewall deployment, GKE and infrastructure-as-code implementation, operations-suite monitoring, and IAM/service-account security. These map to the named existing Cloud Engineer skills; no general programming or database skill is inferred.",
+          "verification_date": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "microsoft_azure_administrator_associate_az_104",
+      "name": "Microsoft Certified: Azure Administrator Associate",
+      "issuing_organization": "Microsoft",
+      "credential_type": "industry_certification",
+      "platform": null,
+      "exam_code": "AZ-104",
+      "version": "Skills measured as of October 26, 2023",
+      "profile_match": {
+        "name": "Microsoft Certified: Azure Administrator Associate",
+        "organization": "Microsoft"
+      },
+      "mapping_status": "needs_review",
+      "scoring_eligible": false,
+      "mapping_status_reason": "Microsoft states that exams are periodically updated and supplies skills-measured versions by date. The profile has no exam date or credential date with which to select the applicable objective version.",
+      "role_mappings": [
+        {
+          "role_id": "cloud_engineer",
+          "skill_ids": [
+            "microsoft_azure",
+            "identity_and_access_management",
+            "virtual_networking",
+            "observability",
+            "cloud_logging_services",
+            "cloud_provider_consoles_and_clis"
+          ],
+          "source_url": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104",
+          "source_section": "Skills measured as of October 26, 2023: Manage Azure identities and governance; Implement and manage storage; Deploy and manage Azure compute resources; Implement and manage virtual networking; Monitor and maintain Azure resources",
+          "objective_summary": "The published skills include Azure identity/governance, compute and storage administration, virtual networking, and Azure Monitor/log configuration and queries. The role mapping omits storage-specific skills that have no directly corresponding skill ID in this role.",
+          "verification_date": "2026-11-15"
+        },
+        {
+          "role_id": "it_infrastructure_engineer",
+          "skill_ids": [
+            "microsoft_entra_id",
+            "virtual_machines_and_cloud_compute",
+            "powershell"
+          ],
+          "source_url": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104",
+          "source_section": "Skills measured as of October 26, 2023: Manage Azure identities and governance; Deploy and manage Azure compute resources; Audience profile",
+          "objective_summary": "The objectives cover Azure identity administration and Azure compute resources; the audience profile also explicitly calls out PowerShell familiarity. No broader Windows/Linux administration proficiency is inferred.",
+          "verification_date": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "microsoft_power_bi_data_analyst_associate_pl_300",
+      "name": "Microsoft Certified: Power BI Data Analyst Associate",
+      "issuing_organization": "Microsoft",
+      "credential_type": "industry_certification",
+      "platform": null,
+      "exam_code": "PL-300",
+      "version": "Skills measured as of April 20, 2026",
+      "profile_match": {
+        "name": "Microsoft Certified: Power BI Data Analyst Associate",
+        "organization": "Microsoft"
+      },
+      "mapping_status": "needs_review",
+      "scoring_eligible": false,
+      "mapping_status_reason": "Microsoft periodically updates exam objectives and the profile does not store the exam or award date needed to identify the applicable objective version.",
+      "role_mappings": [
+        {
+          "role_id": "data_analyst",
+          "skill_ids": [
+            "power_bi",
+            "dax",
+            "data_cleaning_and_validation",
+            "data_visualization",
+            "dashboard_design"
+          ],
+          "source_url": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/pl-300",
+          "source_section": "Skills measured as of April 20, 2026: Prepare the data; Model the data; Visualize and analyze the data; Manage and secure Power BI",
+          "objective_summary": "The study guide explicitly covers Power BI data preparation, modelling, visualization/analysis, and administration/security; it names Power Query and DAX as expected proficiency. Only matching existing Data Analyst skills are included. No generic data-science or machine-learning skills are mapped.",
+          "verification_date": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "istqb_certified_tester_foundation_level_ctfl_v4",
+      "name": "ISTQB Certified Tester Foundation Level",
+      "issuing_organization": "ISTQB",
+      "credential_type": "industry_certification",
+      "platform": null,
+      "exam_code": "CTFL",
+      "version": "v4.0; syllabus v4.0.1",
+      "profile_match": {
+        "name": "ISTQB Certified Tester Foundation Level",
+        "organization": "ISTQB"
+      },
+      "mapping_status": "needs_review",
+      "scoring_eligible": false,
+      "mapping_status_reason": "The official materials distinguish CTFL v4.0 from earlier syllabus versions, while the profile stores neither version nor award date. The listed mappings describe the reviewed v4.0 syllabus only and must not be scored until the user's version is disambiguated.",
+      "role_mappings": [
+        {
+          "role_id": "manual_qa_engineer",
+          "skill_ids": [
+            "test_case_design",
+            "exploratory_testing",
+            "functional_testing",
+            "regression_testing",
+            "defect_lifecycle",
+            "requirements_based_testing",
+            "istqb_test_techniques",
+            "boundary_value_and_equivalence_partitioning",
+            "decision_tables",
+            "risk_based_testing",
+            "test_coverage_and_traceability"
+          ],
+          "source_url": "https://istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/",
+          "source_section": "CTFL v4.0 content: Fundamentals of Testing; Testing Throughout the Software Development Lifecycle; Static Testing; Test Analysis & Design; Managing The Test Activities; Test Tools",
+          "objective_summary": "The official CTFL outline names testing fundamentals, test levels/types, static testing, black-box/white-box/experience-based techniques, planning and risk management, configuration/defect management, and test-tool support. The mapping is limited to corresponding existing Manual QA skills and does not imply proficiency in a specific automation framework.",
+          "verification_date": "2026-11-15"
+        },
+        {
+          "role_id": "qa_automation_engineer_sdet",
+          "skill_ids": [
+            "test_design",
+            "risk_based_testing",
+            "istqb_testing_concepts"
+          ],
+          "source_url": "https://istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/",
+          "source_section": "CTFL v4.0 content: Fundamentals of Testing; Test Analysis & Design; Managing The Test Activities",
+          "objective_summary": "The syllabus supports general testing concepts, test analysis/design, and risk-based test planning. It does not establish Playwright, Selenium, Cypress, programming, API automation, or other specific SDET tools and techniques.",
+          "verification_date": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "iiba_certified_business_analysis_professional_cbap",
+      "name": "Certified Business Analysis Professional (CBAP)",
+      "issuing_organization": "International Institute of Business Analysis (IIBA)",
+      "credential_type": "industry_certification",
+      "platform": null,
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Certified Business Analysis Professional (CBAP)",
+        "organization": "International Institute of Business Analysis (IIBA)"
+      },
+      "mapping_status": "verified",
+      "scoring_eligible": true,
+      "mapping_status_reason": "The current official blueprint names six BABOK knowledge areas and provides competency detail. No distinct version or exam-code variant is identified on the reviewed blueprint; the mapping is to that dated official blueprint.",
+      "role_mappings": [
+        {
+          "role_id": "business_analyst",
+          "skill_ids": [
+            "requirements_elicitation",
+            "traceability",
+            "workshop_facilitation",
+            "babok_practices",
+            "requirements_lifecycle",
+            "stakeholder_analysis"
+          ],
+          "source_url": "https://www.iiba.org/knowledgehub/certification/cbap-certification/about-cbap-certification/roadmap-to-cbap-certification/study-and-prepare/exam-blueprint-and-competencies/",
+          "source_section": "Exam Blueprint and Competencies: Elicitation and Collaboration (12%); Requirements Life Cycle Management (15%); BABOK knowledge areas and competencies",
+          "objective_summary": "The blueprint explicitly includes Elicitation and Collaboration and Requirements Life Cycle Management, and organizes competencies around BABOK knowledge areas. These support the listed existing Business Analyst skills. Other skills such as process modelling or SQL are omitted because the blueprint does not establish them as certification outcomes by itself.",
+          "verification_date": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "google_cloud_professional_machine_learning_engineer",
+      "name": "Professional Machine Learning Engineer",
+      "issuing_organization": "Google Cloud",
+      "credential_type": "industry_certification",
+      "platform": null,
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Professional Machine Learning Engineer",
+        "organization": "Google Cloud"
+      },
+      "mapping_status": "verified",
+      "scoring_eligible": true,
+      "mapping_status_reason": "The current official certification page describes model training, serving, pipeline automation, monitoring, and scaling. Mappings are limited to corresponding Machine Learning Engineer skills; certification possession is not a proficiency-level claim.",
+      "role_mappings": [
+        {
+          "role_id": "machine_learning_engineer",
+          "skill_ids": [
+            "model_training_and_evaluation",
+            "model_serving",
+            "mlops_pipelines",
+            "model_monitoring",
+            "managed_ml_platforms"
+          ],
+          "source_url": "https://cloud.google.com/learn/certification/machine-learning-engineer",
+          "source_section": "Exam overview: scale prototypes into ML models; serve and scale models; automate and orchestrate ML pipelines; monitor AI solutions",
+          "objective_summary": "The current official Google Cloud exam overview explicitly covers model development/training, serving, pipeline automation, and monitoring. It supports only these existing ML Engineer skill IDs; it does not establish general Python proficiency or skills outside the guide.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "google_cloud_associate_data_practitioner",
+      "name": "Associate Data Practitioner",
+      "issuing_organization": "Google Cloud",
+      "credential_type": "industry_certification",
+      "platform": null,
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Associate Data Practitioner",
+        "organization": "Google Cloud"
+      },
+      "mapping_status": "verified",
+      "scoring_eligible": true,
+      "mapping_status_reason": "The official credential page identifies the current title and describes data preparation/ingestion, analysis/presentation, pipeline orchestration, and data management. The mapping is restricted to directly corresponding Data Analyst skills.",
+      "role_mappings": [
+        {
+          "role_id": "data_analyst",
+          "skill_ids": [
+            "data_cleaning_and_validation",
+            "data_visualization"
+          ],
+          "source_url": "https://cloud.google.com/learn/certification/data-practitioner",
+          "source_section": "Exam assesses: prepare and ingest data; analyze and present data; orchestrate data pipelines; manage data",
+          "objective_summary": "The official page explicitly lists data preparation/ingestion and analysis/presentation. These support data cleaning/validation and data visualization. No specific database, programming language, or cloud product skill is inferred.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "google_cloud_digital_leader",
+      "name": "Cloud Digital Leader",
+      "issuing_organization": "Google Cloud",
+      "credential_type": "industry_certification",
+      "platform": null,
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Cloud Digital Leader",
+        "organization": "Google Cloud"
+      },
+      "mapping_status": "verified",
+      "scoring_eligible": true,
+      "mapping_status_reason": "The official exam guide covers cloud service models and business trade-offs/use cases. Mapping is limited to the Technology Consultant role; it does not imply hands-on cloud engineering proficiency.",
+      "role_mappings": [
+        {
+          "role_id": "technology_consultant",
+          "skill_ids": [
+            "cloud_service_models",
+            "cost_and_risk_trade_offs"
+          ],
+          "source_url": "https://cloud.google.com/learn/certification/guides/cloud-digital-leader",
+          "source_section": "Section 1.2: total cost of ownership and business use cases; Section 1.3: cloud model trade-offs and shared responsibility; Section 5.1: cloud security concepts and business implications; Section 6.1: financial governance and managing cloud costs",
+          "objective_summary": "The exam guide covers total cost of ownership, cloud model trade-offs, security threats and business implications, and financial governance and cost control. This supports the existing technology consulting skills for cloud service models and cost/risk trade-offs, not implementation skills.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "cisco_ccna_200_301_v1_1",
+      "name": "Cisco Certified Network Associate (CCNA)",
+      "issuing_organization": "Cisco",
+      "credential_type": "industry_certification",
+      "platform": null,
+      "exam_code": "200-301",
+      "version": "v1.1 (transition to v2.0 scheduled 2027-02-03)",
+      "profile_match": {
+        "name": "Cisco Certified Network Associate (CCNA)",
+        "organization": "Cisco"
+      },
+      "mapping_status": "needs_review",
+      "scoring_eligible": false,
+      "mapping_status_reason": "The official page identifies 200-301 CCNA v1.1 and a scheduled transition to v2.0. The profile stores neither exam version nor award date, so a self-reported title cannot select the applicable objectives. Kept non-scorable pending identity disambiguation.",
+      "role_mappings": [
+        {
+          "role_id": "network_engineer",
+          "skill_ids": [
+            "routing_and_switching",
+            "tcp_ip",
+            "vlan_design",
+            "wireless_networking",
+            "firewall_policy"
+          ],
+          "source_url": "https://learningnetwork.cisco.com/s/ccna-exam-topics",
+          "source_section": "200-301 CCNA v1.1 exam topics: Network Fundamentals; Network Access; IP Connectivity; IP Services; Security Fundamentals; Automation and Programmability",
+          "objective_summary": "Cisco current exam-topic page supports the listed networking concepts for the reviewed v1.1 exam. These version-specific mappings are retained for review only because the existing profile cannot identify which exam version was earned.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "pmi_certified_associate_in_project_management_capm",
+      "name": "Certified Associate in Project Management (CAPM)",
+      "issuing_organization": "Project Management Institute (PMI)",
+      "credential_type": "industry_certification",
+      "platform": null,
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Certified Associate in Project Management (CAPM)",
+        "organization": "Project Management Institute (PMI)"
+      },
+      "mapping_status": "verified",
+      "scoring_eligible": true,
+      "mapping_status_reason": "PMI publishes the current CAPM credential and exam content outline. The mapping is limited to project planning, delivery approaches, risk/change, and governance skills explicitly covered by the outline.",
+      "role_mappings": [
+        {
+          "role_id": "project_manager",
+          "skill_ids": [
+            "scope_and_schedule_planning",
+            "risk_and_issue_management",
+            "agile_and_predictive_delivery",
+            "change_control"
+          ],
+          "source_url": "https://www.pmi.org/certifications/certified-associate-capm/",
+          "source_section": "Exam content: Project Management Fundamentals and Core Concepts; Predictive, Plan-Based Methodologies; Agile Methodologies; Business Analysis Frameworks",
+          "objective_summary": "PMI current CAPM page links its exam content outline, which addresses project life cycles, scope, risk, change, predictive and adaptive methods. Mappings are limited to corresponding existing Project Manager skills.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "google_project_management_professional_certificate",
+      "name": "Google Project Management Professional Certificate",
+      "issuing_organization": "Google",
+      "credential_type": "professional_certificate",
+      "platform": "Coursera",
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Google Project Management Professional Certificate",
+        "organization": "Google"
+      },
+      "mapping_status": "verified",
+      "scoring_eligible": true,
+      "mapping_status_reason": "The official Coursera program page identifies Google as the provider and describes applied assessments, project life cycle, schedule/budget/team planning, and Agile project work. Role mappings reflect only those published outcomes.",
+      "role_mappings": [
+        {
+          "role_id": "project_manager",
+          "skill_ids": [
+            "scope_and_schedule_planning",
+            "budget_and_resource_tracking",
+            "agile_and_predictive_delivery",
+            "dependency_management"
+          ],
+          "source_url": "https://www.coursera.org/professional-certificates/google-project-management",
+          "source_section": "Program outcomes and applied project: traditional and Agile project initiation/planning/running; schedule, budget, team; project life cycle",
+          "objective_summary": "The official program page describes applied activities and outcomes for project planning, scheduling, budgeting, team coordination, lifecycle, and Agile delivery. These map to the listed Project Manager skills; no leadership seniority or certification equivalence is claimed.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "google_ux_design_professional_certificate",
+      "name": "Google UX Design Professional Certificate",
+      "issuing_organization": "Google",
+      "credential_type": "professional_certificate",
+      "platform": "Coursera",
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Google UX Design Professional Certificate",
+        "organization": "Google"
+      },
+      "mapping_status": "verified",
+      "scoring_eligible": true,
+      "mapping_status_reason": "The official program page identifies Google as provider and explicitly documents user research, wireframes/prototypes, usability studies, accessibility, design systems, and Figma. Mapped only to UI/UX Designer skills.",
+      "role_mappings": [
+        {
+          "role_id": "ui_ux_designer",
+          "skill_ids": [
+            "user_research",
+            "wireframing_and_prototyping",
+            "usability_testing",
+            "accessibility_evaluation",
+            "design_systems",
+            "figma_prototyping",
+            "figma"
+          ],
+          "source_url": "https://www.coursera.org/professional-certificates/google-ux-design",
+          "source_section": "Program outcomes and course: user research/interviews/usability studies; wireframes and prototypes; accessibility; high-fidelity Figma designs; design systems",
+          "objective_summary": "The official program materials explicitly describe the mapped UX practices and Figma use. The mapping is confined to the UI/UX Designer role and does not infer visual-design mastery or professional experience.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "google_data_analytics_professional_certificate",
+      "name": "Google Data Analytics Professional Certificate",
+      "issuing_organization": "Google",
+      "credential_type": "professional_certificate",
+      "platform": "Coursera",
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Google Data Analytics Professional Certificate",
+        "organization": "Google"
+      },
+      "mapping_status": "verified",
+      "scoring_eligible": true,
+      "mapping_status_reason": "The official program page identifies Google as provider and lists data cleaning, analysis, visualization, spreadsheets, SQL, Python, and Tableau. Mapped skills are limited to those represented in the Data Analyst role.",
+      "role_mappings": [
+        {
+          "role_id": "data_analyst",
+          "skill_ids": [
+            "sql",
+            "python",
+            "data_cleaning_and_validation",
+            "data_visualization",
+            "data_storytelling",
+            "excel",
+            "tableau"
+          ],
+          "source_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+          "source_section": "Program outcomes and courses: data cleaning/analysis/visualization; SQL and Python; spreadsheets; Tableau; data storytelling",
+          "objective_summary": "The current official course page explicitly lists these tools and data-analysis outcomes. They map to existing Data Analyst skills. The certificate is treated as evidence of aligned learning, not a claim of independent proficiency.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "ibm_data_science_professional_certificate",
+      "name": "IBM Data Science Professional Certificate",
+      "issuing_organization": "IBM",
+      "credential_type": "professional_certificate",
+      "platform": "Coursera",
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "IBM Data Science Professional Certificate",
+        "organization": "IBM"
+      },
+      "mapping_status": "verified",
+      "scoring_eligible": true,
+      "mapping_status_reason": "The official Coursera program page identifies IBM as provider and details Python, R, SQL, Pandas, NumPy, Jupyter, data visualization, and machine-learning work. Mappings are limited to explicitly represented skills in the existing data roles.",
+      "role_mappings": [
+        {
+          "role_id": "data_scientist",
+          "skill_ids": [
+            "python",
+            "sql",
+            "pandas",
+            "jupyter",
+            "data_visualization",
+            "exploratory_analysis",
+            "scikit_learn"
+          ],
+          "source_url": "https://www.coursera.org/professional-certificates/ibm-data-science",
+          "source_section": "Program courses: Data Scientist toolkit; Python/Pandas/NumPy/Jupyter; database and SQL work; exploratory analysis; visualization; machine-learning models",
+          "objective_summary": "IBM/Coursera program content explicitly names the mapped languages, libraries, notebook platform, data-analysis practices, and machine-learning model work. The mapping does not imply a level of proficiency.",
+          "verification_date": "2026-11-16"
+        },
+        {
+          "role_id": "data_analyst",
+          "skill_ids": [
+            "python",
+            "sql",
+            "data_visualization"
+          ],
+          "source_url": "https://www.coursera.org/professional-certificates/ibm-data-science",
+          "source_section": "Program courses: Python, SQL, dashboard/visualization and data-analysis projects",
+          "objective_summary": "The published curriculum includes Python, SQL, and data visualization through applied data-analysis projects, which correspond to these existing Data Analyst skills.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "ibm_ai_engineering_professional_certificate",
+      "name": "IBM AI Engineering Professional Certificate",
+      "issuing_organization": "IBM",
+      "credential_type": "professional_certificate",
+      "platform": "Coursera",
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "IBM AI Engineering Professional Certificate",
+        "organization": "IBM"
+      },
+      "mapping_status": "verified",
+      "scoring_eligible": true,
+      "mapping_status_reason": "The official program page identifies IBM as provider and explicitly describes ML/deep-learning model work, Python, scikit-learn, PyTorch, TensorFlow, Spark deployment, and LLM/RAG applications. Mappings reflect only the directly named skills.",
+      "role_mappings": [
+        {
+          "role_id": "machine_learning_engineer",
+          "skill_ids": [
+            "python",
+            "model_training_and_evaluation",
+            "model_serving",
+            "scikit_learn",
+            "pytorch",
+            "tensorflow",
+            "mlops_pipelines"
+          ],
+          "source_url": "https://www.coursera.org/professional-certificates/ai-engineer",
+          "source_section": "Program outcomes: implement supervised/unsupervised models; build deep-learning models; deploy ML algorithms and pipelines; named tools include Python, scikit-learn, PyTorch, TensorFlow, and Spark",
+          "objective_summary": "The official program page explicitly documents model implementation and deployment/pipelines with the mapped ML libraries and language. This does not imply mastery or map unlisted skills.",
+          "verification_date": "2026-11-16"
+        },
+        {
+          "role_id": "ai_engineer",
+          "skill_ids": [
+            "python",
+            "pytorch",
+            "hugging_face_transformers",
+            "langchain",
+            "retrieval_augmented_generation"
+          ],
+          "source_url": "https://www.coursera.org/professional-certificates/ai-engineer",
+          "source_section": "Program outcomes: generative AI applications, LLMs and RAG; tools include Python, PyTorch, Hugging Face, and LangChain",
+          "objective_summary": "The official program description explicitly covers LLM/RAG application work and names the mapped tools. Skills are limited to existing AI Engineer IDs directly evidenced by that content.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "harvardx_computer_science_for_python_programming_professional_certificate",
+      "name": "Computer Science for Python Programming Professional Certificate",
+      "issuing_organization": "HarvardX",
+      "credential_type": "professional_certificate",
+      "platform": "edX",
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Computer Science for Python Programming Professional Certificate",
+        "organization": "HarvardX"
+      },
+      "mapping_status": "needs_review",
+      "scoring_eligible": false,
+      "mapping_status_reason": "The canonical program title and profile-match name have been aligned with the official edX listing. Keep this record non-scorable pending review of the corrected exact name-and-issuer match against the credential artifact.",
+      "role_mappings": [
+        {
+          "role_id": "software_engineer",
+          "skill_ids": [
+            "python",
+            "sql",
+            "data_structures_and_algorithms",
+            "automated_testing",
+            "debugging",
+            "object_oriented_design"
+          ],
+          "source_url": "https://www.edx.org/certificates/professional-certificate/harvardx-computer-science-for-python-programming",
+          "source_section": "Program outcomes: Python and other languages; algorithmic thinking/data structures; debugging and unit tests; classes, objects, methods, and properties",
+          "objective_summary": "The official HarvardX/edX certificate page lists these programming and computer-science outcomes. Mappings omit languages not represented as skills for this role and avoid claiming professional-level competence.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "ec_council_cybersecurity_essentials_professional_certificate",
+      "name": "Cybersecurity Essentials Professional Certificate",
+      "issuing_organization": "EC-Council",
+      "credential_type": "professional_certificate",
+      "platform": "edX",
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Cybersecurity Essentials Professional Certificate",
+        "organization": "EC-Council"
+      },
+      "mapping_status": "needs_review",
+      "scoring_eligible": false,
+      "mapping_status_reason": "The official edX listing identifies the EC-Council program and its component courses, but the page inspected does not provide sufficiently detailed assessed learning objectives for each mapped skill. Retained for review and excluded from scoring.",
+      "role_mappings": [
+        {
+          "role_id": "cybersecurity_analyst",
+          "skill_ids": [
+            "incident_investigation",
+            "threat_actor_tradecraft",
+            "security_controls_and_risk"
+          ],
+          "source_url": "https://www.edx.org/certificates/professional-certificate/ec-council-cybersecurity-essentials",
+          "source_section": "Program overview and constituent courses: Network Defense Essentials, Ethical Hacking Essentials, Digital Forensics Essentials",
+          "objective_summary": "The program listing establishes the curriculum areas but does not sufficiently specify the assessment outcomes for each mapped skill. These candidate mappings are therefore non-scorable pending further review.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "linkedin_learning_python_essential_training_fundamentals",
+      "name": "Python Essential Training: Fundamentals for Software Engineering",
+      "issuing_organization": "LinkedIn Learning",
+      "credential_type": "course_completion",
+      "platform": "LinkedIn Learning",
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Python Essential Training: Fundamentals for Software Engineering",
+        "organization": "LinkedIn Learning"
+      },
+      "mapping_status": "needs_review",
+      "scoring_eligible": false,
+      "mapping_status_reason": "The course page documents Python syntax, data structures, and debugging. LinkedIn states completion certificates require viewing videos and do not certify software proficiency; retained as non-scorable until course-completion evidence is explicitly approved for scoring.",
+      "role_mappings": [
+        {
+          "role_id": "software_engineer",
+          "skill_ids": [
+            "python",
+            "debugging"
+          ],
+          "source_url": "https://www.linkedin.com/learning/python-essential-training-fundamentals-for-software-engineering",
+          "source_section": "Course details: Python syntax, data types, conditionals, loops, functions, data structures, and debugging",
+          "objective_summary": "The course page supports exposure to Python and debugging topics. LinkedIn official certificate FAQ says completion certificates do not certify the software skill and may require only video completion, so this mapping is deliberately marked needs_review and cannot score.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "udemy_learn_python_programming_masterclass",
+      "name": "Learn Python Programming Masterclass",
+      "issuing_organization": "Udemy",
+      "credential_type": "course_completion",
+      "platform": "Udemy",
+      "exam_code": null,
+      "version": null,
+      "profile_match": {
+        "name": "Learn Python Programming Masterclass",
+        "organization": "Udemy"
+      },
+      "mapping_status": "needs_review",
+      "scoring_eligible": false,
+      "mapping_status_reason": "The Udemy listing describes Python language topics and exercises, while Udemy describes its credential as a course-completion certificate, not formal accreditation. Because completion does not establish assessed skill attainment and marketplace content can change, this entry is non-scorable pending review.",
+      "role_mappings": [
+        {
+          "role_id": "software_engineer",
+          "skill_ids": [
+            "python"
+          ],
+          "source_url": "https://www.udemy.com/course/python-the-complete-python-developer-course/",
+          "source_section": "Course outcomes: Python programming; listed coding exercises and course curriculum",
+          "objective_summary": "The course listing supports Python course-content relevance, not independently assessed proficiency. Udemy confirms that its certificate is for course completion and is not formal accreditation. This candidate mapping is non-scorable pending an explicit course-evidence policy.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "oracle_certified_professional_java_se_17_developer",
+      "name": "Oracle Certified Professional: Java SE 17 Developer",
+      "issuing_organization": "Oracle",
+      "credential_type": "industry_certification",
+      "platform": null,
+      "exam_code": "1Z0-829",
+      "version": "Java SE 17",
+      "profile_match": {
+        "name": "Oracle Certified Professional: Java SE 17 Developer",
+        "organization": "Oracle"
+      },
+      "mapping_status": "needs_review",
+      "scoring_eligible": false,
+      "mapping_status_reason": "Oracle documents exam 1Z0-829 and a retirement date of 2027-02-28. The profile stores neither exam code nor award date, so similar Oracle Java credentials cannot safely be disambiguated for scoring.",
+      "role_mappings": [
+        {
+          "role_id": "software_engineer",
+          "skill_ids": [
+            "java",
+            "object_oriented_design",
+            "data_structures_and_algorithms"
+          ],
+          "source_url": "https://mylearn.oracle.com/ou/exam/java-se-17-developer-1z0-829/105037/110649/170355",
+          "source_section": "Oracle MyLearn exam overview: Java SE 17 Developer (1Z0-829); Java language, coding practices, Java SE APIs; retirement notice",
+          "objective_summary": "Oracle official exam page describes Java SE development, core language, coding practices, APIs, and exam retirement. The version-specific mapping is retained only for review because the current profile cannot identify exam/date.",
+          "verification_date": "2026-11-16"
+        }
+      ]
+    }
+  ]
+}

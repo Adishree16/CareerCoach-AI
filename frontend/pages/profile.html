@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9f8">
+  <meta name="description" content="Complete your CareerCoach AI profile with your basic and education details.">
+  <title>Profile Setup — CareerCoach AI</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/profile.css">
+  <script type="module" src="../js/pages/profile.js"></script>
+</head>
+<body class="profile-page">
+  <a class="profile-skip-link" href="#profile-form">Skip to basic information</a>
+
+  <main class="profile-layout">
+    <header class="profile-topbar">
+      <div class="profile-brand" aria-label="CareerCoach AI">
+        <svg class="profile-brand-mark" viewBox="0 0 54 54" aria-hidden="true">
+          <defs>
+            <linearGradient id="profile-brand-gradient" x1="0" y1="1" x2="1" y2="0">
+              <stop stop-color="#7028f5"/>
+              <stop offset="1" stop-color="#a34dff"/>
+            </linearGradient>
+          </defs>
+          <rect x="9" y="30" width="9" height="13" rx="2" fill="url(#profile-brand-gradient)"/>
+          <rect x="23" y="21" width="9" height="22" rx="2" fill="url(#profile-brand-gradient)"/>
+          <rect x="37" y="11" width="9" height="32" rx="2" fill="url(#profile-brand-gradient)"/>
+        </svg>
+        <span>CareerCoach AI</span>
+      </div>
+      <p class="profile-context">Profile setup</p>
+    </header>
+
+    <section class="profile-card" aria-labelledby="profile-primary-title">
+      <div class="profile-intro">
+        <h1 class="profile-eyebrow" id="profile-primary-title">PROFILE</h1>
+        <h2 id="profile-title">Let's get to know you.</h2>
+        <p class="profile-description">Tell us a little about yourself and your educational background to get started.</p>
+      </div>
+
+      <section class="profile-progress" aria-label="Profile setup progress">
+        <p class="progress-caption">Step 1 of 3</p>
+        <ol class="progress-list">
+          <li class="progress-step is-current" aria-current="step">
+            <span class="step-marker" aria-hidden="true">1</span>
+            <span class="step-copy"><span class="step-kicker">Step 1</span><span class="step-name">Basic Information</span></span>
+          </li>
+          <li class="progress-step is-pending">
+            <span class="step-marker" aria-hidden="true">2</span>
+            <span class="step-copy"><span class="step-kicker">Step 2</span><span class="step-name">Career &amp; Skills Profile</span></span>
+          </li>
+          <li class="progress-step is-pending">
+            <span class="step-marker" aria-hidden="true">3</span>
+            <span class="step-copy"><span class="step-kicker">Step 3</span><span class="step-name">Additional Information</span></span>
+          </li>
+        </ol>
+      </section>
+
+      <form id="profile-form" novalidate>
+        <section id="basic-section" class="profile-step-panel" aria-label="Basic Information">
+        <fieldset class="form-section">
+          <legend>Personal Details</legend>
+          <div class="field-grid field-grid-personal">
+            <div class="form-field">
+              <label for="first-name">First Name <span class="required-mark" aria-hidden="true">*</span></label>
+              <input class="form-control" id="first-name" name="firstName" type="text" autocomplete="given-name" placeholder="Enter your first name" required aria-describedby="first-name-error">
+              <p class="field-error" id="first-name-error" data-error-for="first-name" aria-live="polite"></p>
+            </div>
+            <div class="form-field">
+              <label for="last-name">Last Name <span class="required-mark" aria-hidden="true">*</span></label>
+              <input class="form-control" id="last-name" name="lastName" type="text" autocomplete="family-name" placeholder="Enter your last name" required aria-describedby="last-name-error">
+              <p class="field-error" id="last-name-error" data-error-for="last-name" aria-live="polite"></p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section education-section">
+          <legend>Education Details</legend>
+          <div class="field-grid field-grid-education">
+            <div class="form-field">
+              <label for="education-level">Education Level <span class="required-mark" aria-hidden="true">*</span></label>
+              <select class="form-control" id="education-level" name="educationLevel" required aria-describedby="education-level-error">
+                <option value="" selected disabled>Select your education level</option>
+                <option value="secondary">Secondary School</option>
+                <option value="higher-secondary">Higher Secondary / Pre-University</option>
+                <option value="diploma">Diploma</option>
+                <option value="undergraduate">Undergraduate</option>
+                <option value="postgraduate">Postgraduate</option>
+                <option value="doctorate">Doctorate</option>
+                <option value="other">Other</option>
+              </select>
+              <p class="field-error" id="education-level-error" data-error-for="education-level" aria-live="polite"></p>
+              <div class="conditional-field" id="education-level-other-wrap" hidden>
+                <label for="education-level-other">Your Education Level <span class="required-mark" aria-hidden="true">*</span></label>
+                <input class="form-control" id="education-level-other" name="educationLevelOther" type="text" placeholder="Enter your education level" disabled aria-describedby="education-level-other-error">
+                <p class="field-error" id="education-level-other-error" data-error-for="education-level-other" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="degree">Degree <span class="required-mark" aria-hidden="true">*</span></label>
+              <select class="form-control" id="degree" name="degree" required disabled aria-describedby="degree-error">
+                <option value="" selected disabled>Select your degree</option>
+              </select>
+              <p class="field-error" id="degree-error" data-error-for="degree" aria-live="polite"></p>
+              <div class="conditional-field" id="degree-other-wrap" hidden>
+                <label for="degree-other">Your Degree <span class="required-mark" aria-hidden="true">*</span></label>
+                <input class="form-control" id="degree-other" name="degreeOther" type="text" placeholder="Enter your degree" disabled aria-describedby="degree-other-error">
+                <p class="field-error" id="degree-other-error" data-error-for="degree-other" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="form-field field-study">
+              <label for="field-of-study">Field of Study / Branch <span class="required-mark" aria-hidden="true">*</span></label>
+              <select class="form-control" id="field-of-study" name="fieldOfStudy" required disabled aria-describedby="field-of-study-error">
+                <option value="" selected disabled>Select your field of study or branch</option>
+              </select>
+              <p class="field-error" id="field-of-study-error" data-error-for="field-of-study" aria-live="polite"></p>
+              <div class="conditional-field" id="field-of-study-other-wrap" hidden>
+                <label for="field-of-study-other">Your Field of Study / Branch <span class="required-mark" aria-hidden="true">*</span></label>
+                <input class="form-control" id="field-of-study-other" name="fieldOfStudyOther" type="text" placeholder="Enter your field of study / branch" disabled aria-describedby="field-of-study-other-error">
+                <p class="field-error" id="field-of-study-other-error" data-error-for="field-of-study-other" aria-live="polite"></p>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+          <button class="next-button" type="submit">Next <span aria-hidden="true">→</span></button>
+        </div>
+        </section>
+
+        <section id="career-section" class="profile-step-panel career-panel" aria-labelledby="career-section-title" hidden>
+          <header class="career-intro">
+            <p class="career-kicker">STEP 2</p>
+            <h2 id="career-section-title" tabindex="-1">Career &amp; Skills Profile</h2>
+            <p>Tell us about your career status, technical skills and professional experience.</p>
+          </header>
+
+          <section class="career-subsection" aria-labelledby="career-status-title">
+            <h3 id="career-status-title">Career Status</h3>
+            <p class="subsection-description">How would you describe your current career status?</p>
+            <div class="career-options" role="radiogroup" aria-labelledby="career-status-title" aria-describedby="career-status-error">
+              <label class="career-option"><input type="radio" name="careerStatus" value="Student"><span class="career-option-title">Student</span></label>
+              <label class="career-option"><input type="radio" name="careerStatus" value="Fresher"><span class="career-option-title">Fresher</span></label>
+              <label class="career-option"><input type="radio" name="careerStatus" value="Experienced"><span class="career-option-title">Experienced</span></label>
+            </div>
+            <p class="field-error" id="career-status-error" aria-live="polite"></p>
+          </section>
+
+          <section class="career-subsection" aria-labelledby="technical-skills-title">
+            <h3 id="technical-skills-title">Technical Skills</h3>
+            <p class="subsection-description">What technical skills do you have?</p>
+            <div class="skill-entry-row">
+              <label class="visually-hidden" for="skill-input">Technical skill</label>
+              <input class="form-control" id="skill-input" type="text" placeholder="Enter a technical skill..." aria-describedby="skill-helper skill-error">
+              <button class="secondary-button" id="add-skill-button" type="button">Add Skill</button>
+            </div>
+            <p class="field-helper" id="skill-helper">Examples: Python, Java, SQL, Docker, AWS, React, PostgreSQL</p>
+            <p class="field-error" id="skill-error" aria-live="polite"></p>
+            <ul class="skill-list" id="skill-list" aria-label="Added technical skills"></ul>
+          </section>
+
+          <section class="career-subsection" aria-labelledby="experience-title">
+            <h3 id="experience-title">Experience</h3>
+            <div id="internship-experience" hidden>
+              <h4>Internship Experience</h4>
+              <p class="subsection-description">Add details about internships you have completed. If you have no internship experience, you can skip this section.</p>
+              <div class="experience-list" id="internship-list" aria-label="Internship entries">
+                <article class="experience-entry" data-internship-entry data-index="0" aria-labelledby="internship-entry-title-0">
+                  <div class="experience-entry-heading"><h4 id="internship-entry-title-0">Internship 1</h4></div>
+                  <div class="experience-grid">
+                    <div class="form-field"><label for="internship-0-company">Company / Organization Name (Optional)</label><input class="form-control" id="internship-0-company" data-internship-field="company" type="text" placeholder="Enter company or organization name"></div>
+                    <div class="form-field"><label for="internship-0-role">Internship Role</label><input class="form-control" id="internship-0-role" data-internship-field="role" type="text" placeholder="e.g. Software Development Intern" aria-describedby="internship-0-role-error"><p class="field-error" id="internship-0-role-error" data-internship-error="role" aria-live="polite"></p></div>
+                    <div class="form-field"><label for="internship-0-duration">Duration of Internship</label><input class="form-control" id="internship-0-duration" data-internship-field="duration" type="text" placeholder="e.g. 6 months"></div>
+                    <div class="form-field experience-wide"><label for="internship-0-responsibilities">Responsibilities and Contributions</label><textarea class="form-control form-textarea" id="internship-0-responsibilities" data-internship-field="responsibilities" placeholder="Describe your responsibilities and contributions during this internship..." aria-describedby="internship-0-responsibilities-error"></textarea><p class="field-error" id="internship-0-responsibilities-error" data-internship-error="responsibilities" aria-live="polite"></p></div>
+                    <div class="form-field experience-wide"><label for="internship-0-technologies">Skills and Technologies Used</label><textarea class="form-control form-textarea" id="internship-0-technologies" data-internship-field="technologies" placeholder="e.g. Python, Selenium, SQL, FastAPI..." aria-describedby="internship-0-technologies-error"></textarea><p class="field-error" id="internship-0-technologies-error" data-internship-error="technologies" aria-live="polite"></p></div>
+                  </div>
+                </article>
+              </div>
+              <template id="internship-template">
+                <article class="experience-entry" data-internship-entry data-index="__INDEX__" aria-labelledby="internship-entry-title-__INDEX__">
+                  <div class="experience-entry-heading"><h4 id="internship-entry-title-__INDEX__">Internship __NUMBER__</h4></div>
+                  <div class="experience-grid">
+                    <div class="form-field"><label for="internship-__INDEX__-company">Company / Organization Name (Optional)</label><input class="form-control" id="internship-__INDEX__-company" data-internship-field="company" type="text" placeholder="Enter company or organization name"></div>
+                    <div class="form-field"><label for="internship-__INDEX__-role">Internship Role</label><input class="form-control" id="internship-__INDEX__-role" data-internship-field="role" type="text" placeholder="e.g. Software Development Intern" aria-describedby="internship-__INDEX__-role-error"><p class="field-error" id="internship-__INDEX__-role-error" data-internship-error="role" aria-live="polite"></p></div>
+                    <div class="form-field"><label for="internship-__INDEX__-duration">Duration of Internship</label><input class="form-control" id="internship-__INDEX__-duration" data-internship-field="duration" type="text" placeholder="e.g. 6 months"></div>
+                    <div class="form-field experience-wide"><label for="internship-__INDEX__-responsibilities">Responsibilities and Contributions</label><textarea class="form-control form-textarea" id="internship-__INDEX__-responsibilities" data-internship-field="responsibilities" placeholder="Describe your responsibilities and contributions during this internship..." aria-describedby="internship-__INDEX__-responsibilities-error"></textarea><p class="field-error" id="internship-__INDEX__-responsibilities-error" data-internship-error="responsibilities" aria-live="polite"></p></div>
+                    <div class="form-field experience-wide"><label for="internship-__INDEX__-technologies">Skills and Technologies Used</label><textarea class="form-control form-textarea" id="internship-__INDEX__-technologies" data-internship-field="technologies" placeholder="e.g. Python, Selenium, SQL, FastAPI..." aria-describedby="internship-__INDEX__-technologies-error"></textarea><p class="field-error" id="internship-__INDEX__-technologies-error" data-internship-error="technologies" aria-live="polite"></p></div>
+                  </div>
+                </article>
+              </template>
+              <button class="secondary-button add-experience-button" id="add-internship-button" type="button">Add Another Internship</button>
+            </div>
+
+            <div id="professional-experience" hidden>
+              <h4>Professional Experience</h4>
+              <p class="subsection-description">Add details about your current or previous professional work experience.</p>
+
+            <div class="experience-list" id="experience-list" aria-label="Professional experience entries">
+              <article class="experience-entry" data-experience-entry data-index="0" aria-labelledby="experience-entry-title-0">
+                <div class="experience-entry-heading"><h4 id="experience-entry-title-0">Experience 1</h4></div>
+                <div class="experience-grid">
+                  <div class="form-field"><label for="experience-0-company">Company / Organization Name (Optional)</label><input class="form-control" id="experience-0-company" data-experience-field="company" type="text" placeholder="Enter company or organization name"></div>
+                  <div class="form-field"><label for="experience-0-role">Job Title / Role</label><input class="form-control" id="experience-0-role" data-experience-field="role" type="text" placeholder="e.g. Software Engineer" aria-describedby="experience-0-role-error"><p class="field-error" id="experience-0-role-error" data-experience-error="role" aria-live="polite"></p></div>
+                  <div class="form-field"><label for="experience-0-duration">Duration at Organization</label><input class="form-control" id="experience-0-duration" data-experience-field="duration" type="text" placeholder="e.g. 2 years"></div>
+                  <div class="form-field experience-wide"><label for="experience-0-responsibilities">Responsibilities and Contributions</label><textarea class="form-control form-textarea" id="experience-0-responsibilities" data-experience-field="responsibilities" placeholder="Describe your responsibilities and contributions at this organization..." aria-describedby="experience-0-responsibilities-error"></textarea><p class="field-error" id="experience-0-responsibilities-error" data-experience-error="responsibilities" aria-live="polite"></p></div>
+                  <div class="form-field experience-wide"><label for="experience-0-technologies">Skills and Technologies Used</label><textarea class="form-control form-textarea" id="experience-0-technologies" data-experience-field="technologies" placeholder="e.g. Python, Java, SQL, AWS..." aria-describedby="experience-0-technologies-error"></textarea><p class="field-error" id="experience-0-technologies-error" data-experience-error="technologies" aria-live="polite"></p></div>
+                </div>
+              </article>
+            </div>
+            <template id="experience-template">
+              <article class="experience-entry" data-experience-entry data-index="__INDEX__" aria-labelledby="experience-entry-title-__INDEX__">
+                <div class="experience-entry-heading"><h4 id="experience-entry-title-__INDEX__">Experience __NUMBER__</h4></div>
+                <div class="experience-grid">
+                  <div class="form-field"><label for="experience-__INDEX__-company">Company / Organization Name (Optional)</label><input class="form-control" id="experience-__INDEX__-company" data-experience-field="company" type="text" placeholder="Enter company or organization name"></div>
+                  <div class="form-field"><label for="experience-__INDEX__-role">Job Title / Role</label><input class="form-control" id="experience-__INDEX__-role" data-experience-field="role" type="text" placeholder="e.g. Software Engineer" aria-describedby="experience-__INDEX__-role-error"><p class="field-error" id="experience-__INDEX__-role-error" data-experience-error="role" aria-live="polite"></p></div>
+                  <div class="form-field"><label for="experience-__INDEX__-duration">Duration at Organization</label><input class="form-control" id="experience-__INDEX__-duration" data-experience-field="duration" type="text" placeholder="e.g. 2 years"></div>
+                  <div class="form-field experience-wide"><label for="experience-__INDEX__-responsibilities">Responsibilities and Contributions</label><textarea class="form-control form-textarea" id="experience-__INDEX__-responsibilities" data-experience-field="responsibilities" placeholder="Describe your responsibilities and contributions at this organization..." aria-describedby="experience-__INDEX__-responsibilities-error"></textarea><p class="field-error" id="experience-__INDEX__-responsibilities-error" data-experience-error="responsibilities" aria-live="polite"></p></div>
+                  <div class="form-field experience-wide"><label for="experience-__INDEX__-technologies">Skills and Technologies Used</label><textarea class="form-control form-textarea" id="experience-__INDEX__-technologies" data-experience-field="technologies" placeholder="e.g. Python, Java, SQL, AWS..." aria-describedby="experience-__INDEX__-technologies-error"></textarea><p class="field-error" id="experience-__INDEX__-technologies-error" data-experience-error="technologies" aria-live="polite"></p></div>
+                </div>
+              </article>
+            </template>
+            <button class="secondary-button add-experience-button" id="add-experience-button" type="button">Add Another Experience</button>
+            </div>
+          </section>
+
+          <div class="form-status career-status" id="career-form-status" role="status" aria-live="polite" hidden></div>
+          <div class="section-navigation">
+            <button class="secondary-button" id="previous-section-button" type="button">Previous</button>
+            <button class="next-button" type="submit">Next <span aria-hidden="true">→</span></button>
+          </div>
+        </section>
+
+        <section id="additional-section" class="profile-step-panel additional-panel" aria-labelledby="additional-section-title" hidden>
+          <header class="additional-intro">
+            <p class="career-kicker">STEP 3</p>
+            <h2 id="additional-section-title" tabindex="-1">Additional Information</h2>
+            <p class="additional-lead">Show us what you've accomplished.</p>
+            <p>Highlight your projects, certifications and achievements. These details help us understand your practical experience and strengths.</p>
+          </header>
+
+          <section class="career-subsection" aria-labelledby="projects-title">
+            <h3 id="projects-title">A. Project Experience</h3>
+            <p class="subsection-description">Tell us about the projects you have worked on. You can add multiple projects.</p>
+            <div class="additional-entry-list" id="project-list" aria-label="Project entries">
+              <article class="additional-entry" data-project-entry data-index="0" aria-labelledby="project-entry-title-0">
+                <div class="experience-entry-heading"><h4 id="project-entry-title-0">Project 1</h4></div>
+                <div class="additional-field-grid">
+                  <div class="form-field"><label for="project-0-name">Project Name</label><input class="form-control" id="project-0-name" data-project-field="name" type="text" placeholder="Enter project name" aria-describedby="project-0-name-error"><p class="field-error" id="project-0-name-error" data-project-error="name" aria-live="polite"></p></div>
+                  <div class="form-field"><label for="project-0-technologies">Technologies Used</label><input class="form-control" id="project-0-technologies" data-project-field="technologies" type="text" placeholder="e.g. Python, FastAPI, PostgreSQL" aria-describedby="project-0-technologies-error"><p class="field-error" id="project-0-technologies-error" data-project-error="technologies" aria-live="polite"></p></div>
+                  <div class="form-field additional-wide"><label for="project-0-description">Project Description</label><textarea class="form-control form-textarea" id="project-0-description" data-project-field="description" placeholder="Describe your project, its purpose and your contribution..." aria-describedby="project-0-description-error"></textarea><p class="field-error" id="project-0-description-error" data-project-error="description" aria-live="polite"></p></div>
+                </div>
+              </article>
+            </div>
+            <template id="project-template">
+              <article class="additional-entry" data-project-entry data-index="__INDEX__" aria-labelledby="project-entry-title-__INDEX__">
+                <div class="experience-entry-heading"><h4 id="project-entry-title-__INDEX__">Project __NUMBER__</h4></div>
+                <div class="additional-field-grid">
+                  <div class="form-field"><label for="project-__INDEX__-name">Project Name</label><input class="form-control" id="project-__INDEX__-name" data-project-field="name" type="text" placeholder="Enter project name" aria-describedby="project-__INDEX__-name-error"><p class="field-error" id="project-__INDEX__-name-error" data-project-error="name" aria-live="polite"></p></div>
+                  <div class="form-field"><label for="project-__INDEX__-technologies">Technologies Used</label><input class="form-control" id="project-__INDEX__-technologies" data-project-field="technologies" type="text" placeholder="e.g. Python, FastAPI, PostgreSQL" aria-describedby="project-__INDEX__-technologies-error"><p class="field-error" id="project-__INDEX__-technologies-error" data-project-error="technologies" aria-live="polite"></p></div>
+                  <div class="form-field additional-wide"><label for="project-__INDEX__-description">Project Description</label><textarea class="form-control form-textarea" id="project-__INDEX__-description" data-project-field="description" placeholder="Describe your project, its purpose and your contribution..." aria-describedby="project-__INDEX__-description-error"></textarea><p class="field-error" id="project-__INDEX__-description-error" data-project-error="description" aria-live="polite"></p></div>
+                </div>
+              </article>
+            </template>
+            <button class="secondary-button additional-add-button" id="add-project-button" type="button">Add Another Project</button>
+          </section>
+
+          <section class="career-subsection" aria-labelledby="certifications-title">
+            <h3 id="certifications-title">B. Certifications</h3>
+            <p class="subsection-description">Add certifications or professional qualifications you have earned.</p>
+            <div class="additional-entry-list" id="certification-list" aria-label="Certification entries">
+              <article class="additional-entry" data-certification-entry data-index="0" aria-labelledby="certification-entry-title-0">
+                <div class="experience-entry-heading"><h4 id="certification-entry-title-0">Certification 1</h4></div>
+                <div class="additional-field-grid">
+                  <div class="form-field"><label for="certification-0-name">Certification Name</label><input class="form-control" id="certification-0-name" data-certification-field="name" type="text" placeholder="Enter certification name" aria-describedby="certification-0-name-error"><p class="field-error" id="certification-0-name-error" data-certification-error="name" aria-live="polite"></p></div>
+                  <div class="form-field"><label for="certification-0-organization">Issuing Organization</label><input class="form-control" id="certification-0-organization" data-certification-field="organization" type="text" placeholder="e.g. AWS, Microsoft, Google" aria-describedby="certification-0-organization-error"><p class="field-error" id="certification-0-organization-error" data-certification-error="organization" aria-live="polite"></p></div>
+                </div>
+              </article>
+            </div>
+            <template id="certification-template">
+              <article class="additional-entry" data-certification-entry data-index="__INDEX__" aria-labelledby="certification-entry-title-__INDEX__">
+                <div class="experience-entry-heading"><h4 id="certification-entry-title-__INDEX__">Certification __NUMBER__</h4></div>
+                <div class="additional-field-grid">
+                  <div class="form-field"><label for="certification-__INDEX__-name">Certification Name</label><input class="form-control" id="certification-__INDEX__-name" data-certification-field="name" type="text" placeholder="Enter certification name" aria-describedby="certification-__INDEX__-name-error"><p class="field-error" id="certification-__INDEX__-name-error" data-certification-error="name" aria-live="polite"></p></div>
+                  <div class="form-field"><label for="certification-__INDEX__-organization">Issuing Organization</label><input class="form-control" id="certification-__INDEX__-organization" data-certification-field="organization" type="text" placeholder="e.g. AWS, Microsoft, Google" aria-describedby="certification-__INDEX__-organization-error"><p class="field-error" id="certification-__INDEX__-organization-error" data-certification-error="organization" aria-live="polite"></p></div>
+                </div>
+              </article>
+            </template>
+            <button class="secondary-button additional-add-button" id="add-certification-button" type="button">Add Another Certification</button>
+          </section>
+
+          <section class="career-subsection" aria-labelledby="additional-details-title">
+            <h3 id="additional-details-title">C. Additional Details</h3>
+            <div class="additional-details-grid">
+              <div class="form-field"><label for="achievements">Achievements (Optional)</label><textarea class="form-control form-textarea" id="achievements" name="achievements" placeholder="Mention awards, hackathons, competitions, recognitions or other accomplishments..."></textarea></div>
+            </div>
+          </section>
+
+          <div class="form-status additional-status" id="additional-form-status" role="status" aria-live="polite" hidden></div>
+          <div class="section-navigation">
+            <button class="secondary-button" id="previous-additional-button" type="button">Previous</button>
+            <button class="next-button" type="submit">Complete Profile</button>
+          </div>
+        </section>
+
+        <section class="profile-completion" id="profile-completion" aria-labelledby="completion-title" hidden>
+          <div class="completion-mark" aria-hidden="true">✓</div>
+          <h2 id="completion-title" tabindex="-1">Your Profile Setup is Complete!</h2>
+          <p>You've successfully completed your profile information. You're ready for the next stage of your career journey.</p>
+          <p><a class="next-button" href="career-intelligence.html">Continue to Career Intelligence <span aria-hidden="true">→</span></a></p>
+        </section>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

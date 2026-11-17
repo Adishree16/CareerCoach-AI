@@ -1,0 +1,315 @@
+{
+  "catalogue_name": "CareerCoach AI Preferred Work Activity Role Mappings",
+  "version": "1.0.0",
+  "source_frontend": "frontend/pages/career-intelligence.html",
+  "scoring_component": {
+    "id": "preferred_work_activity",
+    "maximum_points": 10,
+    "neutral_option_behavior": "neutral_unavailable"
+  },
+  "scoring_policy": {
+    "exact_reviewed_match": "full_component_allocation",
+    "partial_reviewed_match": "explicit_partial_match_weight_only",
+    "confirmed_mismatch": "zero",
+    "missing_or_unreviewed_mapping": "unavailable",
+    "not_sure_yet": "neutral_unavailable",
+    "unavailable_component_redistribution": "Redistribute proportionally once across available Interest Alignment components so their effective allocations sum to 25 points.",
+    "both_components_unavailable": "interest_alignment_unavailable",
+    "partial_match_weight_note": "No partial-match weights are approved or configured."
+  },
+  "mapping_status_values": [
+    "mapped",
+    "partial",
+    "needs_review",
+    "unmapped",
+    "neutral"
+  ],
+  "activities": [
+    {
+      "id": "building_applications_and_software",
+      "label": "Building applications and software",
+      "role_mappings": [
+        {
+          "role_id": "software_engineer",
+          "role_name": "Software Engineer",
+          "status": "exact_match",
+          "review_status": "approved",
+          "partial_match_weight": null,
+          "evidence_references": [
+            {
+              "source_id": "onet",
+              "reference": "https://www.onetonline.org/link/summary/15-1252.00"
+            }
+          ],
+          "rationale": "O*NET's Software Developers profile lists Software Engineer as a reported title and describes software development; the CareerCoach role responsibilities include implementing features. Together, these support the activity as a role fit, while the connection to CareerCoach's role taxonomy remains a reviewed role-fit interpretation rather than a formal crosswalk.",
+          "reviewer_rationale": "The CareerCoach role centers on designing, building, testing, and maintaining software applications. O*NET's Software Developers profile lists Software Engineer among reported titles and describes software development work, directly supporting this application-building preference as a role fit.",
+          "reviewer_identity": "Project Owner",
+          "reviewed_at": "2026-11-16T04:47:05+00:00"
+        }
+      ],
+      "mapping_status": "unmapped",
+      "role_ids": [],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "No curated role-activity metadata or reviewed relationship is present in the project.",
+      "review_notes": "Do not infer role mappings from role names, descriptions, responsibilities, or skills."
+    },
+    {
+      "id": "solving_technical_problems",
+      "label": "Solving technical problems",
+      "role_mappings": [
+        {
+          "role_id": "software_engineer",
+          "role_name": "Software Engineer",
+          "status": "exact_match",
+          "review_status": "approved",
+          "partial_match_weight": null,
+          "evidence_references": [
+            {
+              "source_id": "onet",
+              "reference": "https://www.onetonline.org/link/summary/15-1252.00"
+            }
+          ],
+          "rationale": "The CareerCoach Software Engineer role includes diagnosing and correcting software defects; O*NET's Software Developers profile provides an occupational reference for error correction and software improvement.",
+          "reviewer_rationale": "Debugging, correcting software errors, diagnosing defects, and improving reliability directly align with the CareerCoach Software Engineer responsibilities. This preference differs from Building applications and software: it signals interest in diagnosing and resolving existing technical problems, rather than primarily creating new functionality.",
+          "reviewer_identity": "Project Owner",
+          "reviewed_at": "2026-11-16T05:01:43+00:00"
+        },
+        {
+          "role_id": "network_engineer",
+          "role_name": "Network Engineer",
+          "status": "exact_match",
+          "review_status": "approved",
+          "partial_match_weight": null,
+          "evidence_references": [
+            {
+              "source_id": "onet",
+              "reference": "https://www.onetonline.org/link/summary/15-1241.00"
+            },
+            {
+              "source_id": "bls",
+              "reference": "https://www.bls.gov/ooh/computer-and-information-technology/computer-network-architects.htm"
+            }
+          ],
+          "rationale": "Direct external task evidence: O*NET's Computer Network Architects profile includes resolving network problems, while BLS describes computer network architects (or network engineers) troubleshooting network issues. CareerCoach knowledge-base evidence: the Network Engineer role includes monitoring network performance and resolving incidents. The relationship is a reviewed role-fit inference, not a formal taxonomy crosswalk.",
+          "reviewer_rationale": "The CareerCoach Network Engineer responsibilities include monitoring network performance and resolving incidents. O*NET lists developing solutions for network problems, and BLS describes network engineers as troubleshooting network issues; the occupational-to-CareerCoach connection is a role-fit inference, not a formal taxonomy crosswalk.",
+          "reviewer_identity": "Project Owner",
+          "reviewed_at": "2026-11-16T04:47:05+00:00"
+        },
+        {
+          "role_id": "cybersecurity_analyst",
+          "role_name": "Cybersecurity Analyst",
+          "status": "exact_match",
+          "review_status": "approved",
+          "partial_match_weight": null,
+          "evidence_references": [
+            {
+              "source_id": "onet",
+              "reference": "https://www.onetonline.org/link/details/15-1212.00"
+            }
+          ],
+          "rationale": "O*NET's Information Security Analysts profile covers vulnerability assessment and incident response relevant to the CareerCoach Cybersecurity Analyst role's alert triage and investigation; the occupational title differs, so this is a role-fit inference rather than a formal taxonomy crosswalk.",
+          "reviewer_rationale": "Security alert investigation, vulnerability assessment, incident response, and security remediation align with the CareerCoach Cybersecurity Analyst responsibilities. The external Information Security Analyst occupation supports this relationship, but it is not a formal taxonomy crosswalk to CareerCoach's Cybersecurity Analyst role.",
+          "reviewer_identity": "Project Owner",
+          "reviewed_at": "2026-11-16T05:01:43+00:00"
+        }
+      ],
+      "mapping_status": "unmapped",
+      "role_ids": [],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "No curated role-activity metadata or reviewed relationship is present in the project.",
+      "review_notes": "Do not infer role mappings from role names, descriptions, responsibilities, or skills."
+    },
+    {
+      "id": "working_with_data",
+      "label": "Working with data",
+      "role_mappings": [
+        {
+          "role_id": "data_scientist",
+          "role_name": "Data Scientist",
+          "status": "exact_match",
+          "review_status": "approved",
+          "partial_match_weight": null,
+          "evidence_references": [
+            {
+              "source_id": "onet",
+              "reference": "https://www.onetonline.org/link/summary/15-2051.00"
+            }
+          ],
+          "rationale": "O*NET's Data Scientists profile describes analyzing datasets and reporting findings; the CareerCoach role responsibilities include acquiring, cleaning, and exploring data. Together, these support the activity as a role fit; the occupational profile is broader than CareerCoach's role taxonomy.",
+          "reviewer_rationale": "Working with data is central to the CareerCoach Data Scientist role, which acquires, cleans, and explores datasets and develops analytical models. O*NET's Data Scientists profile directly describes analyzing large datasets and validating models, matching the selected activity.",
+          "reviewer_identity": "Project Owner",
+          "reviewed_at": "2026-11-16T04:47:05+00:00"
+        }
+      ],
+      "mapping_status": "unmapped",
+      "role_ids": [],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "No curated role-activity metadata or reviewed relationship is present in the project.",
+      "review_notes": "Do not infer role mappings from role names, descriptions, responsibilities, or skills."
+    },
+    {
+      "id": "working_with_ai_and_automation",
+      "label": "Working with AI and automation",
+      "role_mappings": [],
+      "mapping_status": "unmapped",
+      "role_ids": [],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "No curated role-activity metadata or reviewed relationship is present in the project.",
+      "review_notes": "Do not infer role mappings from role names, descriptions, responsibilities, or skills."
+    },
+    {
+      "id": "designing_user_experiences",
+      "label": "Designing user experiences",
+      "role_mappings": [
+        {
+          "role_id": "ui_ux_designer",
+          "role_name": "UI/UX Designer",
+          "status": "exact_match",
+          "review_status": "approved",
+          "partial_match_weight": null,
+          "evidence_references": [
+            {
+              "source_id": "onet",
+              "reference": "https://www.onetonline.org/link/summary/15-1255.00"
+            }
+          ],
+          "rationale": "O*NET's Web and Digital Interface Designers profile describes designing and testing interfaces for usability; the CareerCoach role includes user journeys, interaction flows, prototyping, and user validation. This supports the activity as a role fit, while the external occupation remains broader than CareerCoach's specific role taxonomy.",
+          "reviewer_rationale": "The CareerCoach UI/UX Designer maps user journeys, creates interaction flows and prototypes, and validates designs with users. O*NET's Web and Digital Interface Designers profile covers interface design, usability testing, and user research, supporting this activity as a direct role fit.",
+          "reviewer_identity": "Project Owner",
+          "reviewed_at": "2026-11-16T04:47:05+00:00"
+        }
+      ],
+      "mapping_status": "unmapped",
+      "role_ids": [],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "No curated role-activity metadata or reviewed relationship is present in the project.",
+      "review_notes": "Do not infer role mappings from role names, descriptions, responsibilities, or skills."
+    },
+    {
+      "id": "managing_cloud_infrastructure",
+      "label": "Managing cloud infrastructure",
+      "role_mappings": [],
+      "mapping_status": "unmapped",
+      "role_ids": [],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "No curated role-activity metadata or reviewed relationship is present in the project.",
+      "review_notes": "Do not infer role mappings from role names, descriptions, responsibilities, or skills."
+    },
+    {
+      "id": "testing_software_and_ensuring_quality",
+      "label": "Testing software and ensuring quality",
+      "role_mappings": [
+        {
+          "role_id": "qa_automation_engineer_sdet",
+          "role_name": "QA Automation Engineer / SDET",
+          "status": "exact_match",
+          "review_status": "approved",
+          "partial_match_weight": null,
+          "evidence_references": [
+            {
+              "source_id": "onet",
+              "reference": "https://www.onetonline.org/link/details/15-1253.00"
+            }
+          ],
+          "rationale": "O*NET's Software Quality Assurance Analysts and Testers profile covers software testing and includes Automation Tester among reported titles. This supports the activity as a role fit for CareerCoach's automation-focused SDET role, though it is not a formal crosswalk to that specialization.",
+          "reviewer_rationale": "Testing and quality engineering are central to the CareerCoach SDET role, including building automated tests and diagnosing failures. O*NET's Software QA Analysts and Testers profile includes software test development and automated testing tasks, supporting this testing preference for the automation-focused role.",
+          "reviewer_identity": "Project Owner",
+          "reviewed_at": "2026-11-16T04:47:05+00:00"
+        },
+        {
+          "role_id": "manual_qa_engineer",
+          "role_name": "Manual QA Engineer",
+          "status": "exact_match",
+          "review_status": "approved",
+          "partial_match_weight": null,
+          "evidence_references": [
+            {
+              "source_id": "onet",
+              "reference": "https://www.onetonline.org/link/details/15-1253.00"
+            }
+          ],
+          "rationale": "O*NET's Software Quality Assurance Analysts and Testers profile describes developing and executing software tests and documenting defects; it supports broad QA work but does not establish a formal crosswalk to CareerCoach's Manual QA specialization.",
+          "reviewer_rationale": "Exploratory, functional, regression, and acceptance testing, defect documentation, and fix verification align with the CareerCoach Manual QA Engineer responsibilities. This mapping represents broad software-testing interest, not a preference for manual testing over automation; the same broad activity can validly map to Manual QA Engineer and QA Automation Engineer / SDET.",
+          "reviewer_identity": "Project Owner",
+          "reviewed_at": "2026-11-16T05:01:43+00:00"
+        }
+      ],
+      "mapping_status": "unmapped",
+      "role_ids": [],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "No curated role-activity metadata or reviewed relationship is present in the project.",
+      "review_notes": "Do not infer role mappings from role names, descriptions, responsibilities, or skills."
+    },
+    {
+      "id": "planning_and_coordinating_projects",
+      "label": "Planning and coordinating projects",
+      "role_mappings": [
+        {
+          "role_id": "project_manager",
+          "role_name": "Project Manager",
+          "status": "exact_match",
+          "review_status": "approved",
+          "partial_match_weight": null,
+          "evidence_references": [
+            {
+              "source_id": "onet",
+              "reference": "https://www.onetonline.org/link/summary/13-1082.00"
+            }
+          ],
+          "rationale": "O*NET's Project Management Specialists profile covers coordinating schedules, timelines, staffing, and budgets; the CareerCoach role includes planning work, dependencies, resources, and risks. This supports the activity as a role fit, while the occupational correspondence is a reviewed interpretation rather than a formal taxonomy crosswalk.",
+          "reviewer_rationale": "Planning and coordination are core CareerCoach Project Manager responsibilities, including work, dependencies, resources, risks, and delivery. O*NET's Project Management Specialists profile specifically includes planning, scheduling, and coordinating project activities to meet deadlines.",
+          "reviewer_identity": "Project Owner",
+          "reviewed_at": "2026-11-16T04:47:05+00:00"
+        }
+      ],
+      "mapping_status": "unmapped",
+      "role_ids": [],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "No curated role-activity metadata or reviewed relationship is present in the project.",
+      "review_notes": "Do not infer role mappings from role names, descriptions, responsibilities, or skills."
+    },
+    {
+      "id": "researching_and_exploring_new_technologies",
+      "label": "Researching and exploring new technologies",
+      "role_mappings": [],
+      "mapping_status": "unmapped",
+      "role_ids": [],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "No curated role-activity metadata or reviewed relationship is present in the project.",
+      "review_notes": "Do not infer role mappings from role names, descriptions, responsibilities, or skills."
+    },
+    {
+      "id": "communicating_with_clients_and_teams",
+      "label": "Communicating with clients and teams",
+      "role_mappings": [],
+      "mapping_status": "unmapped",
+      "role_ids": [],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "No curated role-activity metadata or reviewed relationship is present in the project.",
+      "review_notes": "Do not infer role mappings from role names, descriptions, responsibilities, or skills."
+    },
+    {
+      "id": "not_sure_yet",
+      "label": "Not Sure Yet",
+      "role_mappings": [],
+      "mapping_status": "neutral",
+      "role_ids": [],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "The frontend presents this as an uncertainty response, not a work activity. The approved scoring behavior is neutral and unavailable, not a negative match.",
+      "review_notes": "Treat this component as unavailable for proportional reallocation; do not assign zero as a mismatch.",
+      "neutral": true,
+      "scoring_availability": "unavailable"
+    }
+  ]
+}

@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Personalized Roadmap | CareerCoach AI</title>
+  <meta name="theme-color" content="#f8f7ff">
+  <meta name="description" content="Explore a personalized, evidence-based career roadmap.">
+  <title>Personalized Career Roadmap | CareerCoach AI</title>
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/typography.css">
@@ -11,14 +13,146 @@
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/pages/roadmap.css">
   <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/pages/roadmap.js"></script>
 </head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
+<body class="roadmap-page">
+  <a class="skip-link" href="#main-content">Skip to roadmap</a>
   <div data-site-header></div>
-  <main id="main-content" class="page-container">
-    <h1>Personalized Roadmap</h1>
-    <p>This page is a structural placeholder. Its design and functionality will be defined in a future task.</p>
+  <main id="main-content" class="page-container roadmap-container">
+    <header class="roadmap-page-heading">
+      <p class="roadmap-eyebrow">STEP 5 · CAREER ROADMAP</p>
+      <h1>Your Personalized Career Roadmap</h1>
+      <p>Explore role-specific skills and project ideas based on the information in your saved profile.</p>
+    </header>
+
+    <section class="roadmap-state roadmap-loading" data-roadmap-loading role="status" aria-live="polite">
+      <span class="roadmap-spinner" aria-hidden="true"></span>
+      <p>Preparing your career roadmap…</p>
+    </section>
+
+    <section class="roadmap-state roadmap-error" data-roadmap-error role="alert" aria-labelledby="roadmap-error-title" hidden>
+      <span class="roadmap-state-icon" aria-hidden="true">!</span>
+      <h2 id="roadmap-error-title" data-error-title>We couldn’t load your roadmap</h2>
+      <p data-error-message>Please check your connection and try again.</p>
+      <div class="roadmap-state-actions">
+        <button class="button button-primary" type="button" data-roadmap-retry>Try again</button>
+        <a class="button button-secondary" href="career-intelligence.html" data-error-back>Back to Career Intelligence</a>
+        <a class="roadmap-text-link" href="login.html" data-roadmap-sign-in hidden>Sign in</a>
+      </div>
+    </section>
+
+    <section class="roadmap-state roadmap-invalid" data-roadmap-invalid role="status" hidden>
+      <span class="roadmap-state-icon" aria-hidden="true">i</span>
+      <h2>Choose a career role first</h2>
+      <p>Open a career analysis and continue to the roadmap for that role.</p>
+      <a class="button button-primary" href="career-intelligence.html">Back to Career Intelligence</a>
+    </section>
+
+    <div class="roadmap-content" data-roadmap-content hidden aria-busy="false">
+      <section class="roadmap-card roadmap-overview" aria-labelledby="career-overview-title">
+        <p class="roadmap-eyebrow">CAREER OVERVIEW</p>
+        <h2 id="career-overview-title" data-role-name></h2>
+        <p class="roadmap-domain" data-role-domain></p>
+        <p class="roadmap-description" data-role-description></p>
+        <div class="roadmap-subsection">
+          <h3>Main responsibilities</h3>
+          <ul class="roadmap-list" data-responsibilities></ul>
+          <p class="roadmap-empty" data-responsibilities-empty hidden>No responsibility details are available yet.</p>
+        </div>
+      </section>
+
+      <section class="roadmap-card" aria-labelledby="existing-skills-title">
+        <div class="roadmap-section-heading">
+          <span class="roadmap-section-icon" aria-hidden="true">✓</span>
+          <div><h2 id="existing-skills-title">Your Existing Skills</h2><p>Relevant evidence recorded in your profile. This reflects what is listed, not a verified measure of mastery.</p></div>
+        </div>
+        <div class="roadmap-subsection">
+          <h3>Technical skills</h3>
+          <ul class="roadmap-chip-list" data-demonstrated-skills></ul>
+          <p class="roadmap-empty" data-demonstrated-skills-empty hidden>No relevant technical skills are currently shown in the saved profile.</p>
+        </div>
+        <div class="roadmap-subsection">
+          <h3>Projects and experience</h3>
+          <div class="roadmap-evidence-list" data-structured-evidence></div>
+          <p class="roadmap-empty" data-structured-evidence-empty hidden>No matching evidence was found in the structured project, internship, or professional-experience fields.</p>
+        </div>
+        <div class="roadmap-subsection" data-certification-section hidden>
+          <h3>Eligible certification evidence</h3>
+          <div class="roadmap-evidence-list" data-certifications></div>
+        </div>
+        <p class="roadmap-note" data-existing-skills-note></p>
+      </section>
+
+      <section class="roadmap-card" aria-labelledby="explore-skills-title">
+        <div class="roadmap-section-heading">
+          <span class="roadmap-section-icon" aria-hidden="true">✧</span>
+          <div><h2 id="explore-skills-title">Skills to Explore</h2><p>These applicable role requirements are not currently demonstrated by the structured profile evidence.</p></div>
+        </div>
+        <div class="roadmap-subsection" data-individual-section>
+          <h3>Topics by category</h3>
+          <div class="roadmap-skill-groups" data-individual-skills></div>
+        </div>
+        <div class="roadmap-subsection" data-alternatives-section>
+          <h3>Technology alternatives</h3>
+          <div class="roadmap-requirement-list" data-alternative-requirements></div>
+        </div>
+        <div class="roadmap-subsection" data-complementary-section>
+          <h3>Complementary skills</h3>
+          <div class="roadmap-requirement-list" data-complementary-requirements></div>
+        </div>
+        <div class="roadmap-subsection" data-stacks-section>
+          <h3>Compatible technology stacks</h3>
+          <div class="roadmap-requirement-list" data-compatible-stacks></div>
+        </div>
+        <p class="roadmap-empty" data-skills-empty hidden>No applicable role requirements are currently listed to explore.</p>
+        <p class="roadmap-note" data-skills-note></p>
+      </section>
+
+      <section class="roadmap-card" aria-labelledby="learning-guidance-title">
+        <div class="roadmap-section-heading">
+          <span class="roadmap-section-icon" aria-hidden="true">→</span>
+          <div><h2 id="learning-guidance-title">Learning Guidance</h2><p>Use these catalogue notes to guide what you explore next.</p></div>
+        </div>
+        <div class="roadmap-guidance-grid">
+          <div><h3>Role-specific guidance</h3><ul class="roadmap-list" data-catalogue-guidance></ul><p class="roadmap-empty" data-catalogue-guidance-empty hidden>No additional role-specific guidance is available.</p></div>
+          <div><h3>Keep in mind</h3><ul class="roadmap-list" data-general-guidance></ul><p class="roadmap-empty" data-general-guidance-empty hidden>No general learning guidance is available.</p></div>
+        </div>
+        <p class="roadmap-resource-note">Verified courses, tutorials, external resources, durations, and a required learning sequence are not provided here.</p>
+      </section>
+
+      <section class="roadmap-card" aria-labelledby="practice-projects-title">
+        <div class="roadmap-section-heading">
+          <span class="roadmap-section-icon" aria-hidden="true">⌘</span>
+          <div><h2 id="practice-projects-title">Practice Projects</h2><p>Curated ideas you could try to build experience in this career area.</p></div>
+        </div>
+        <ul class="roadmap-project-list" data-practice-projects></ul>
+        <p class="roadmap-empty" data-practice-projects-empty hidden>No curated practice project ideas are available for this role yet.</p>
+        <p class="roadmap-note" data-projects-note></p>
+      </section>
+
+      <section class="roadmap-card roadmap-growth" aria-labelledby="career-growth-title">
+        <div class="roadmap-section-heading">
+          <span class="roadmap-section-icon" aria-hidden="true">↗</span>
+          <div><h2 id="career-growth-title">Career Growth</h2><p>Possible directions from the career catalogue; these are not guaranteed outcomes.</p></div>
+        </div>
+        <div class="roadmap-subsection">
+          <h3>Related roles</h3>
+          <ul class="roadmap-chip-list roadmap-related-roles" data-related-roles></ul>
+          <p class="roadmap-empty" data-related-roles-empty hidden>No related roles are listed for this career yet.</p>
+        </div>
+        <div class="roadmap-subsection">
+          <h3>Possible progression paths</h3>
+          <ol class="roadmap-path-list" data-progression-paths></ol>
+          <p class="roadmap-empty" data-progression-paths-empty hidden>No progression paths are listed for this career yet.</p>
+        </div>
+        <p class="roadmap-note" data-growth-note></p>
+      </section>
+
+      <p class="roadmap-disclaimer">This roadmap is guidance based on the saved profile and role catalogue. It does not guarantee employment or career progression.</p>
+      <div class="roadmap-footer-actions"><a class="button button-secondary" href="career-intelligence.html">Back to Career Intelligence</a></div>
+    </div>
   </main>
   <div data-site-footer></div>
 </body>

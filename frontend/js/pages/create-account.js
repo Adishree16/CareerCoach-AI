@@ -1,11 +1,7 @@
+import { apiPost } from '../services/api.js';
+
 const form = document.querySelector('#account-form');
 const email = document.querySelector('#email');
-const sendButton = document.querySelector('#send-otp');
-const otpBlock = document.querySelector('#otp-block');
-const otpInputs = [...document.querySelectorAll('.otp-inputs input')];
-const verifyButton = document.querySelector('#verify-otp');
-const resendButton = document.querySelector('#resend-otp');
-const otpMessage = document.querySelector('#otp-message');
 const password = document.querySelector('#password');
 const confirmPassword = document.querySelector('#confirm-password');
 const passwordMessage = document.querySelector('#password-message');
@@ -13,10 +9,9 @@ const passwordErrors = document.querySelector('#password-errors');
 const passwordErrorMessages = [...passwordErrors.querySelectorAll('[data-rule-message]')];
 const submitMessage = document.querySelector('#submit-message');
 const createAccountButton = document.querySelector('#create-account-submit');
-let otpInteractionStarted = false;
-let otpVerified = false;
 let passwordTouched = false;
-let resendTimer;
+let registrationInProgress = false;
+let registrationRedirecting = false;
 
 function validEmail(value) {
   return /^[A-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,}$/i.test(value.trim());
@@ -35,110 +30,18 @@ function getPasswordRules() {
 function updateCreateAccountButton() {
   const passwordValid = Object.values(getPasswordRules()).every(Boolean);
   const passwordsMatch = confirmPassword.value.length > 0 && password.value === confirmPassword.value;
-  createAccountButton.disabled = !(
-    validEmail(email.value) &&
-    otpVerified &&
-    passwordValid &&
-    passwordsMatch
+  createAccountButton.disabled = registrationInProgress || registrationRedirecting || !(
+    validEmail(email.value) && passwordValid && passwordsMatch
   );
 }
 
-// Future authentication integration must pass a genuine backend verification result here.
-function applyOtpVerificationResult(verified) {
-  otpVerified = verified === true;
-  updateCreateAccountButton();
-}
-
-function updateEmailState() {
-  const isValid = validEmail(email.value);
-  sendButton.disabled = !isValid;
-  email.setCustomValidity(isValid ? '' : 'Enter a valid email ID');
-  if (!isValid) otpMessage.textContent = 'Enter a valid email ID';
-  else if (!otpInteractionStarted) otpMessage.textContent = '';
-  updateCreateAccountButton();
-}
-
-function startCountdown() {
-  clearInterval(resendTimer);
-  let remaining = 30;
-  resendButton.disabled = true;
-  const tick = () => {
-    resendButton.textContent = `00:${String(remaining).padStart(2, '0')}`;
-    if (remaining <= 0) {
-      clearInterval(resendTimer);
-      resendButton.disabled = false;
-      resendButton.textContent = 'Resend OTP';
-    }
-    remaining -= 1;
-  };
-  tick();
-  resendTimer = setInterval(tick, 1000);
-}
-
-function updateVerifyButtonState() {
-  verifyButton.disabled = !otpInputs.every((input) => /^\d$/.test(input.value));
-}
-
-updateVerifyButtonState();
-
-email.addEventListener('input', updateEmailState);
-email.addEventListener('change', updateEmailState);
-updateEmailState();
-sendButton.addEventListener('click', () => {
-  updateEmailState();
-  if (!validEmail(email.value)) {
-    email.reportValidity();
-    return;
+function setButtonLabel(label) {
+  const textNode = [...createAccountButton.childNodes].find((node) => node.nodeType === Node.TEXT_NODE);
+  if (textNode) {
+    const leadingWhitespace = textNode.textContent.match(/^\s*/)?.[0] || '';
+    textNode.textContent = `${leadingWhitespace}${label} `;
   }
-  otpInteractionStarted = true;
-  otpBlock.hidden = false;
-  otpMessage.textContent = 'Actual OTP delivery will be available after backend integration.';
-  startCountdown();
-  otpInputs[0].focus();
-});
-
-resendButton.addEventListener('click', () => {
-  if (resendButton.disabled) return;
-  otpMessage.textContent = 'Resend is a frontend preview; OTP delivery is not connected yet.';
-  startCountdown();
-});
-
-otpInputs.forEach((input, index) => {
-  input.addEventListener('input', () => {
-    const digits = input.value.replace(/\D/g, '');
-    input.value = digits.slice(-1);
-    updateVerifyButtonState();
-    if (input.value && index < otpInputs.length - 1) otpInputs[index + 1].focus();
-  });
-  input.addEventListener('keydown', (event) => {
-    if (event.key === 'Backspace' && !input.value && index > 0) otpInputs[index - 1].focus();
-    if (event.key === 'ArrowLeft' && index > 0) otpInputs[index - 1].focus();
-    if (event.key === 'ArrowRight' && index < otpInputs.length - 1) otpInputs[index + 1].focus();
-  });
-  input.addEventListener('paste', (event) => {
-    const pasted = event.clipboardData.getData('text').replace(/\D/g, '').slice(0, otpInputs.length);
-    if (!pasted) return;
-    event.preventDefault();
-    pasted.split('').forEach((digit, digitIndex) => { otpInputs[digitIndex].value = digit; });
-    updateVerifyButtonState();
-    otpInputs[Math.min(pasted.length, otpInputs.length - 1)].focus();
-  });
-});
-
-verifyButton.addEventListener('click', () => {
-  if (verifyButton.disabled) return;
-  otpMessage.textContent = 'OTP verification will be available after backend integration.';
-});
-
-document.querySelectorAll('.visibility-toggle').forEach((button) => {
-  button.addEventListener('click', () => {
-    const field = button.parentElement.querySelector('input');
-    const showing = field.type === 'password';
-    field.type = showing ? 'text' : 'password';
-    button.setAttribute('aria-pressed', String(showing));
-    button.setAttribute('aria-label', `${showing ? 'Hide' : 'Show'} ${field.id === 'password' ? 'password' : 'confirm password'}`);
-  });
-});
+}
 
 function updatePasswordRules() {
   const rules = getPasswordRules();
@@ -151,6 +54,8 @@ function updatePasswordRules() {
   return Object.values(rules).every(Boolean);
 }
 
+email.addEventListener('input', updateCreateAccountButton);
+email.addEventListener('change', updateCreateAccountButton);
 password.addEventListener('input', () => {
   passwordTouched = true;
   updatePasswordRules();
@@ -161,41 +66,70 @@ password.addEventListener('change', () => {
   updatePasswordRules();
 });
 confirmPassword.addEventListener('change', updatePasswordRules);
-updatePasswordRules();
 
-form.addEventListener('submit', (event) => {
+document.querySelectorAll('.visibility-toggle').forEach((button) => {
+  button.addEventListener('click', () => {
+    const field = button.parentElement.querySelector('input');
+    const showing = field.type === 'password';
+    field.type = showing ? 'text' : 'password';
+    button.setAttribute('aria-pressed', String(showing));
+    button.setAttribute('aria-label', `${showing ? 'Hide' : 'Show'} ${field.id === 'password' ? 'password' : 'confirm password'}`);
+  });
+});
+
+form.addEventListener('submit', async (event) => {
   event.preventDefault();
+  if (registrationInProgress) return;
+
   submitMessage.textContent = '';
   passwordMessage.textContent = '';
-  updateEmailState();
+  passwordTouched = true;
   const passwordValid = updatePasswordRules();
-  const otpComplete = otpInputs.every((input) => /^\d$/.test(input.value));
   const passwordsMatch = password.value === confirmPassword.value;
-
   if (!validEmail(email.value)) {
     email.setCustomValidity('Enter a valid email ID');
     email.reportValidity();
+    updateCreateAccountButton();
     return;
   }
-  if (!otpInteractionStarted) {
-    submitMessage.textContent = 'Select Send OTP to begin the email verification step.';
-    sendButton.focus();
-    return;
-  }
-  if (!otpComplete) {
-    submitMessage.textContent = 'Enter all six OTP digits to continue.';
-    otpInputs.find((input) => !input.value)?.focus();
-    return;
-  }
-  if (!otpVerified) {
-    submitMessage.textContent = 'OTP verification will be available after backend integration.';
-    verifyButton.focus();
-    return;
-  }
+  email.setCustomValidity('');
   if (!passwordValid || !passwordsMatch) {
-    passwordMessage.textContent = !passwordsMatch ? 'Passwords do not match.' : 'Meet all password requirements to continue.';
+    passwordMessage.textContent = passwordsMatch ? 'Meet all password requirements to continue.' : 'Passwords do not match.';
     (!passwordValid ? password : confirmPassword).focus();
+    updateCreateAccountButton();
     return;
   }
-  submitMessage.textContent = 'Account creation will be available after backend integration.';
+
+  registrationInProgress = true;
+  updateCreateAccountButton();
+  createAccountButton.setAttribute('aria-busy', 'true');
+  setButtonLabel('Creating Account...');
+  try {
+    const result = await apiPost('/api/auth/register', {
+      email: email.value.trim(),
+      password: password.value,
+    });
+    if (result?.registered === true && result?.authenticated === true) {
+      submitMessage.textContent = 'Account created successfully. Please log in with your email and password.';
+    } else if (result?.registered === true && result?.confirmation_required === true) {
+      submitMessage.textContent = result.message || 'Your account was created. Additional verification is required before you can sign in.';
+    } else {
+      throw new Error('Registration was not completed.');
+    }
+    registrationRedirecting = true;
+    updateCreateAccountButton();
+    window.setTimeout(() => {
+      window.location.href = 'login.html';
+    }, 1500);
+  } catch {
+    submitMessage.textContent = 'Unable to create your account right now. Please try again later.';
+  } finally {
+    registrationInProgress = false;
+    createAccountButton.setAttribute('aria-busy', 'false');
+      setButtonLabel('Create Account');
+    updateCreateAccountButton();
+  }
 });
+
+updatePasswordRules();
+updateCreateAccountButton();

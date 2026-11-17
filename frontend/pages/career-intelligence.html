@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Career Intelligence | CareerCoach AI</title>
+  <meta name="theme-color" content="#f8f7ff">
+  <meta name="description" content="Review your saved CareerCoach AI profile before continuing to career preferences.">
+  <title>Career Intelligence — Profile Summary | CareerCoach AI</title>
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/typography.css">
@@ -11,15 +13,336 @@
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/responsive.css">
-  <script type="module" src="../js/main.js"></script>
+  <link rel="stylesheet" href="../css/career-intelligence.css">
+  <script type="module" src="../js/pages/career-intelligence.js"></script>
 </head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <div data-site-header></div>
-  <main id="main-content" class="page-container">
-    <h1>Career Intelligence</h1>
-    <p>This page is a structural placeholder. Its design and functionality will be defined in a future task.</p>
-  </main>
-  <div data-site-footer></div>
+<body class="career-summary-page">
+  <a class="ci-skip-link" href="#summary-content">Skip to profile summary</a>
+
+  <header class="ci-topbar">
+    <a class="ci-brand" href="../index.html" aria-label="CareerCoach AI home">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="27" width="9" height="15" rx="2"/><rect x="19" y="18" width="9" height="24" rx="2"/><rect x="33" y="7" width="9" height="35" rx="2"/></svg>
+      <span>CareerCoach AI</span>
+    </a>
+    <nav class="ci-primary-nav" aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a class="ci-profile-link" href="profile.html">Profile Setup <span aria-label="completed">✓</span></a>
+      <a class="is-active" href="career-intelligence.html" aria-current="page">Career Intelligence</a>
+      <a href="#ai-privacy-settings" data-open-ai-privacy-settings>AI Privacy Settings</a>
+      <a href="roadmap.html">Roadmap</a>
+    </nav>
+    <div class="ci-account-tools">
+      <span class="ci-notification" aria-label="Notifications">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+      </span>
+      <span class="ci-user-avatar" data-user-avatar aria-label="Profile avatar">?</span>
+    </div>
+  </header>
+
+  <div class="ci-layout">
+    <aside class="ci-sidebar" aria-label="Career Intelligence progress">
+      <div class="ci-sidebar-heading">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></svg>
+        <h2>Career Intelligence</h2>
+      </div>
+      <ol class="ci-stepper">
+        <li class="is-current" aria-current="step" data-step="1"><span class="ci-step-number">1</span><span><strong>Profile Summary</strong><small>Review your submitted details</small></span></li>
+        <li data-step="2"><span class="ci-step-number">2</span><span><strong>Career Preferences</strong><small>Tell us about your interests and goals</small></span></li>
+        <li data-step="3"><span class="ci-step-number">3</span><span><strong>Career Recommendations</strong><small>Review all 22 career roles</small></span></li>
+        <li data-step="4"><span class="ci-step-number">4</span><span><strong>Detailed Career Analysis</strong><small>Understand skills, gaps and opportunities</small></span></li>
+        <li data-step="5"><span class="ci-step-number">5</span><span><strong>Choose Your Career Path</strong><small>Select a target role for your roadmap</small></span></li>
+      </ol>
+      <div class="ci-sidebar-motto"><span aria-hidden="true">✧</span><p>Your dreams +<br>Your skills +<br>The right guidance =<br>A brighter future</p></div>
+    </aside>
+
+    <main id="summary-content" class="ci-main">
+      <section class="ci-ai-privacy" data-ai-privacy aria-labelledby="ai-privacy-heading">
+        <div class="ci-ai-privacy-status">
+          <div>
+            <p class="ci-preferences-kicker">OPTIONAL SETTING</p>
+            <h2 id="ai-privacy-heading">AI Personalization</h2>
+            <p data-ai-consent-status role="status" aria-live="polite">Checking your AI privacy settings…</p>
+          </div>
+          <button class="ci-button ci-button-secondary ci-ai-consent-retry" type="button" data-ai-consent-retry hidden>Retry status check</button>
+        </div>
+        <details class="ci-ai-privacy-details" id="ai-privacy-settings" data-ai-privacy-details>
+          <summary>Review AI privacy settings</summary>
+          <div class="ci-ai-privacy-content">
+            <p>AI Personalization is optional. If you enable it, selected role-related information from your profile may be sent to Google Gemini to create personalized career explanations. If Gemini is unavailable, the same selected information may be sent to Groq.</p>
+            <p>Names, email addresses, school and employer names, raw project descriptions, raw responsibilities, and achievements are excluded.</p>
+            <p>AI personalization may add explanations to your three deterministic top career matches. It does not calculate or change scores or ranking. Your deterministic recommendations, detailed analysis, and roadmap remain available if you continue without AI.</p>
+            <p class="ci-ai-privacy-feedback" data-ai-consent-feedback role="status" aria-live="polite" hidden></p>
+            <div class="ci-ai-privacy-actions" data-ai-consent-unset-actions hidden>
+              <button class="ci-button ci-button-primary" type="button" data-ai-consent-grant>Enable AI Personalization</button>
+              <button class="ci-button ci-button-secondary" type="button" data-ai-consent-decline>Continue Without AI</button>
+            </div>
+            <div class="ci-ai-privacy-actions" data-ai-consent-disabled-actions hidden>
+              <button class="ci-button ci-button-primary" type="button" data-ai-consent-enable>Enable AI Personalization</button>
+            </div>
+            <div class="ci-ai-privacy-actions" data-ai-consent-granted-actions hidden>
+              <button class="ci-button ci-button-secondary" type="button" data-ai-consent-withdraw>Withdraw AI Personalization Permission</button>
+            </div>
+          </div>
+        </details>
+      </section>
+      <section class="ci-loading" data-loading role="status">Loading your saved profile…</section>
+      <section class="ci-state-panel" data-empty hidden aria-labelledby="empty-title">
+        <span class="ci-state-icon" aria-hidden="true">✧</span>
+        <h1 id="empty-title">Profile Setup is not complete yet</h1>
+        <p>Complete your profile to see your Career Intelligence summary.</p>
+        <a class="ci-button ci-button-primary" href="profile.html">Return to Profile Setup</a>
+      </section>
+      <section class="ci-state-panel ci-error-panel" data-error hidden aria-labelledby="error-title">
+        <span class="ci-state-icon" aria-hidden="true">!</span>
+        <h1 id="error-title">We couldn’t load your profile</h1>
+        <p data-error-message>Please check your connection and try again.</p>
+        <button class="ci-button ci-button-secondary" type="button" data-retry>Try again</button>
+      </section>
+
+      <div class="ci-dashboard" data-dashboard hidden>
+        <div data-profile-summary-screen>
+        <header class="ci-page-heading">
+          <div class="ci-heading-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="15" r="8"/><path d="M8 41v-5c0-7 7-11 16-11s16 4 16 11v5H8Z"/></svg></div>
+          <div class="ci-heading-copy"><h1>Your Profile Summary</h1><p>Here's a complete overview of the information you've shared. You can edit your details if needed before we analyse your career path.</p></div>
+          <a class="ci-button ci-button-secondary ci-edit-button" href="profile.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 16.5-.8 4.3 4.3-.8L20 7.5 16.5 4 4 16.5Z"/><path d="m14.8 5.7 3.5 3.5"/></svg>Edit Profile</a>
+        </header>
+
+        <section class="ci-overview" aria-label="Profile overview">
+          <div class="ci-overview-person"><span class="ci-large-avatar" data-overview-avatar>?</span><div><h2 data-full-name></h2><p data-degree-summary></p></div></div>
+          <div class="ci-overview-stat"><span class="ci-stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m2 8 10-5 10 5-10 5L2 8Z"/><path d="M6 10v6c3 3 9 3 12 0v-6M22 8v7"/></svg></span><span><strong>Education</strong><small data-education-count></small></span></div>
+          <div class="ci-overview-stat"><span class="ci-stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V4h8v3M3 12h18m-11 0v2h4v-2"/></svg></span><span><strong>Experience</strong><small data-experience-count></small></span></div>
+          <div class="ci-overview-stat"><span class="ci-stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 5-6 7 6 7m8-14 6 7-6 7m-3-16-2 18"/></svg></span><span><strong>Skills</strong><small data-skill-count></small></span></div>
+          <div class="ci-overview-stat"><span class="ci-stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 9h6m-6 4h6m-6 4h4"/></svg></span><span><strong>Projects</strong><small data-project-count></small></span></div>
+        </section>
+
+        <section class="ci-card-grid" aria-label="Profile details">
+          <article class="ci-card" data-card="education">
+            <header class="ci-card-heading"><span class="ci-card-icon"><svg viewBox="0 0 24 24"><path d="m2 8 10-5 10 5-10 5L2 8Z"/><path d="M6 10v6c3 3 9 3 12 0v-6M22 8v7"/></svg></span><h2>Education</h2><button class="ci-text-button" type="button" data-toggle="education" aria-expanded="false">View Details</button></header>
+            <div class="ci-card-body" data-education-list></div>
+          </article>
+
+          <article class="ci-card" data-card="skills">
+            <header class="ci-card-heading"><span class="ci-card-icon"><svg viewBox="0 0 24 24"><path d="m8 5-6 7 6 7m8-14 6 7-6 7m-3-16-2 18"/></svg></span><h2>Skills</h2><button class="ci-text-button" type="button" data-toggle="skills" aria-expanded="false">View All</button></header>
+            <div class="ci-chip-list" data-skills-list></div>
+          </article>
+
+          <article class="ci-card" data-card="experience">
+            <header class="ci-card-heading"><span class="ci-card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V4h8v3M3 12h18m-11 0v2h4v-2"/></svg></span><h2>Experience / Internships</h2><button class="ci-text-button" type="button" data-toggle="experience" aria-expanded="false">View Details ›</button></header>
+            <div class="ci-card-body" data-experience-list></div>
+          </article>
+
+          <article class="ci-card" data-card="projects">
+            <header class="ci-card-heading"><span class="ci-card-icon"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 9h6m-6 4h6m-6 4h4"/></svg></span><h2>Projects</h2><button class="ci-text-button" type="button" data-toggle="projects" aria-expanded="false">View All</button></header>
+            <ul class="ci-bullet-list" data-project-list></ul>
+          </article>
+
+          <article class="ci-card" data-card="certifications">
+            <header class="ci-card-heading"><span class="ci-card-icon ci-cert-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="m8 13-2 9 6-3 6 3-2-9m-4-8 1 2 2 .3-1.5 1.5.4 2.2L12 10l-1.9 1 .4-2.2L9 7.3 11 7l1-2Z"/></svg></span><h2>Certifications</h2><button class="ci-text-button" type="button" data-toggle="certifications" aria-expanded="false">View Details ›</button></header>
+            <ul class="ci-bullet-list ci-cert-list" data-certification-list></ul>
+          </article>
+
+          <article class="ci-card" data-card="additional">
+            <header class="ci-card-heading"><span class="ci-card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8m-8 4h8m-8 4h5"/></svg></span><h2>Additional Details</h2><span class="ci-heading-spacer"></span></header>
+            <ul class="ci-bullet-list" data-additional-list></ul>
+          </article>
+        </section>
+
+        <section class="ci-continuation" aria-label="Continue to career preferences">
+          <span class="ci-info-icon" aria-hidden="true">i</span>
+          <div class="ci-continuation-copy"><strong>Looks good? Let's move to the next step!</strong><p>Share your career preferences so we can find the best matches for you.</p><p class="ci-pending-message" data-next-step-message hidden>Career Preferences will be available in a later step.</p></div>
+          <button class="ci-button ci-button-primary ci-continue-button" type="button" data-continue>Continue to Career Preferences <span aria-hidden="true">→</span></button>
+        </section>
+        </div>
+
+        <section class="ci-preferences-screen" data-preferences-screen hidden aria-labelledby="preferences-title">
+          <header class="ci-preferences-heading">
+            <div>
+              <p class="ci-preferences-kicker">STEP 2 OF 5</p>
+              <h1 id="preferences-title" tabindex="-1">Let's Understand Your Career Preferences</h1>
+              <p>Tell us what interests you, what you enjoy doing and what you want to achieve. We'll use your answers alongside your profile to explore suitable career paths.</p>
+            </div>
+          </header>
+
+          <form class="ci-preferences-form" data-preferences-form novalidate>
+            <fieldset class="ci-preference-question" data-question="career_interest">
+              <legend><span class="ci-question-number">1</span><span><strong>Which career area interests you the most?</strong><small>Choose the field you would most like to explore.</small></span></legend>
+              <label class="ci-select-label" for="career-interest">Career interest</label>
+              <select class="ci-select" id="career-interest" name="career_interest" required>
+                <option value="" selected disabled>Select your career interest</option>
+                <option>Software Development</option>
+                <option>Artificial Intelligence &amp; Machine Learning</option>
+                <option>Data Science &amp; Analytics</option>
+                <option>Cloud Computing &amp; DevOps</option>
+                <option>Cybersecurity</option>
+                <option>IT Infrastructure &amp; Networking</option>
+                <option>Software Testing &amp; Quality Assurance</option>
+                <option>UI/UX &amp; Product Design</option>
+                <option>Product &amp; Project Management</option>
+                <option>Business &amp; Technology Consulting</option>
+                <option>Not Sure Yet</option>
+              </select>
+            </fieldset>
+
+            <fieldset class="ci-preference-question" data-question="preferred_work_activity">
+              <legend><span class="ci-question-number">2</span><span><strong>What type of work do you enjoy doing?</strong><small>Choose the activities that interest you.</small></span></legend>
+              <label class="ci-select-label" for="preferred-work-activity">Preferred work activity</label>
+              <select class="ci-select" id="preferred-work-activity" name="preferred_work_activity" required>
+                <option value="" selected disabled>Select your preferred work activity</option>
+                <option>Building applications and software</option>
+                <option>Solving technical problems</option>
+                <option>Working with data</option>
+                <option>Working with AI and automation</option>
+                <option>Designing user experiences</option>
+                <option>Managing cloud infrastructure</option>
+                <option>Testing software and ensuring quality</option>
+                <option>Planning and coordinating projects</option>
+                <option>Researching and exploring new technologies</option>
+                <option>Communicating with clients and teams</option>
+                <option>Not Sure Yet</option>
+              </select>
+            </fieldset>
+
+            <fieldset class="ci-preference-question" data-question="career_goal">
+              <legend><span class="ci-question-number">3</span><span><strong>What is your primary career goal?</strong><small>Tell us what you want to achieve next.</small></span></legend>
+              <label class="ci-select-label" for="career-goal">Career goal</label>
+              <select class="ci-select" id="career-goal" name="career_goal" required>
+                <option value="" selected disabled>Select your career goal</option>
+                <option>Get my first job</option>
+                <option>Secure an internship</option>
+                <option>Prepare for campus placements</option>
+                <option>Transition to a different career</option>
+                <option>Grow in my current career</option>
+                <option>Specialise in a particular technology</option>
+                <option>Move into a leadership role</option>
+                <option>Explore suitable career options</option>
+                <option>Return to the workforce</option>
+              </select>
+            </fieldset>
+
+            <fieldset class="ci-preference-question" data-question="career_priority">
+              <legend><span class="ci-question-number">4</span><span><strong>What matters most to you in your future career?</strong><small>Choose the priority that matters most to you.</small></span></legend>
+              <label class="ci-select-label" for="career-priority">Career priority</label>
+              <select class="ci-select" id="career-priority" name="career_priority" required>
+                <option value="" selected disabled>Select your career priority</option>
+                <option>Continuous learning and growth</option>
+                <option>Career stability and job security</option>
+                <option>Work-life balance</option>
+                <option>Innovation and creativity</option>
+                <option>Independence and flexibility</option>
+                <option>Leadership and recognition</option>
+                <option>Meaningful impact</option>
+                <option>Competitive compensation</option>
+                <option>Collaboration and teamwork</option>
+                <option>Not Sure Yet</option>
+              </select>
+            </fieldset>
+
+            <p class="ci-preferences-validation" data-preferences-validation role="alert" aria-live="polite" hidden></p>
+            <section class="ci-continuation ci-preferences-continuation" aria-label="Continue to career recommendations">
+              <span class="ci-info-icon" aria-hidden="true">i</span>
+              <div class="ci-continuation-copy"><strong>Ready to discover your career matches?</strong><p>Your profile and these preferences will be used to generate your career recommendations.</p><p class="ci-pending-message" data-preferences-note role="status" aria-live="polite" hidden></p></div>
+              <button class="ci-button ci-button-primary ci-continue-button" type="submit">Analyse My Career Profile <span aria-hidden="true">→</span></button>
+            </section>
+          </form>
+        </section>
+
+        <section class="ci-recommendations-screen" data-recommendations-screen hidden aria-labelledby="recommendations-title">
+          <header class="ci-recommendations-heading">
+            <p class="ci-preferences-kicker">STEP 3 OF 5</p>
+            <h1 id="recommendations-title" tabindex="-1">Your Career Recommendations</h1>
+            <p>Based on the information you shared, here are your top career matches and other options to explore.</p>
+          </header>
+
+          <section class="ci-match-intro" aria-label="Career matches introduction">
+            <span class="ci-match-intro-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="13.5" r="7.5"/><circle cx="10.5" cy="13.5" r="3.5"/><path d="m13 11 8-8m-5 0h5v5"/></svg></span>
+            <div><h2>Career Matches</h2><p>Your strongest matches appear first. Explore other career options below.</p></div>
+            <button class="ci-text-button ci-results-edit-preferences" type="button" data-return-preferences disabled>Review Career Preferences</button>
+          </section>
+
+          <p class="ci-score-disclaimer">These matches are based on your profile and preferences and are not a guarantee of employment.</p>
+
+          <section class="ci-contextual-preferences" data-contextual-preferences hidden aria-labelledby="contextual-preferences-title">
+            <h2 id="contextual-preferences-title">Your career context</h2>
+            <dl>
+              <div><dt>Career Goal</dt><dd data-contextual-career-goal>Not provided</dd></div>
+              <div><dt>Career Priority</dt><dd data-contextual-career-priority>Not provided</dd></div>
+            </dl>
+          </section>
+
+          <section class="ci-recommendations-loading" data-recommendations-loading role="status" aria-live="polite" hidden>
+            <span class="ci-loading-indicator" aria-hidden="true"></span>
+            <p>Calculating your recommendations…</p>
+          </section>
+
+          <section class="ci-recommendation-unavailable" data-recommendations-error aria-labelledby="recommendations-error-title" role="alert" hidden>
+            <span class="ci-unavailable-icon" aria-hidden="true">i</span>
+            <div>
+              <h2 id="recommendations-error-title">We couldn’t load your career recommendations</h2>
+              <p data-recommendations-error-message>Please try again.</p>
+              <a class="ci-text-button ci-recommendation-error-link" data-recommendations-error-link href="login.html" hidden>Sign in</a>
+              <a class="ci-text-button ci-recommendation-error-link" data-recommendations-profile-link href="profile.html" hidden>Return to Profile Setup</a>
+              <button class="ci-text-button ci-recommendations-retry" type="button" data-retry-recommendations>Try again</button>
+              <button class="ci-text-button ci-return-preferences" type="button" data-return-preferences>Review Career Preferences</button>
+            </div>
+          </section>
+
+          <section class="ci-recommendations-empty" data-recommendations-empty role="status" hidden>
+            <h2>No career role results were returned</h2>
+            <p>Review your selections and submit again.</p>
+            <button class="ci-text-button ci-return-preferences" type="button" data-return-preferences>Review Career Preferences</button>
+          </section>
+
+          <p class="ci-results-status" data-recommendations-status role="status" aria-live="polite" hidden></p>
+          <section class="ci-top-recommendations" data-top-recommendations hidden aria-labelledby="top-recommendations-title" aria-live="off">
+              <h2 id="top-recommendations-title">Your Top Career Matches</h2>
+            <p class="ci-top-ranking-message" data-top-ranking-message role="status" aria-live="polite" hidden></p>
+            <div class="ci-role-results" data-top-recommendation-results></div>
+          </section>
+          <section class="ci-recommendations-empty" data-no-eligible-recommendations role="status" hidden>
+            <h2>No eligible recommendations were returned</h2>
+            <p>Your full set of evaluated career roles is still available below.</p>
+          </section>
+          <details class="ci-all-evaluated" data-all-evaluated hidden>
+            <summary>Explore Other Careers</summary>
+            <p class="ci-all-evaluated-intro">Browse the other careers evaluated for your profile.</p>
+            <div class="ci-evaluated-role-list" data-all-evaluated-roles></div>
+          </details>
+
+          <section class="ci-continuation ci-recommendations-continuation" aria-label="Continue to detailed career analysis">
+            <span class="ci-info-icon" aria-hidden="true">i</span>
+            <div class="ci-continuation-copy"><strong>What's next?</strong><p>Choose a career that interests you to learn more about the role.</p><p class="ci-pending-message" data-analysis-unavailable role="status" aria-live="polite" hidden></p></div>
+            <button class="ci-button ci-button-primary ci-continue-button" type="button" data-continue-analysis>Continue to Detailed Career Analysis <span aria-hidden="true">→</span></button>
+          </section>
+        </section>
+
+        <section class="ci-analysis-screen" data-analysis-screen hidden aria-labelledby="analysis-title">
+          <header class="ci-analysis-heading">
+            <p class="ci-preferences-kicker">STEP 4 OF 5</p>
+            <h1 id="analysis-title" tabindex="-1">Detailed Career Analysis</h1>
+            <p data-analysis-selected-role aria-live="polite">Select a career role to review its analysis.</p>
+          </header>
+
+          <div class="ci-analysis-actions">
+            <button class="ci-button ci-button-secondary" type="button" data-back-recommendations>Back to Career Recommendations</button>
+          </div>
+
+          <section class="ci-analysis-loading" data-analysis-loading role="status" aria-live="polite" hidden>
+            <span class="ci-loading-indicator" aria-hidden="true"></span>
+            <p>Preparing the detailed career analysis…</p>
+          </section>
+
+          <section class="ci-analysis-error" data-analysis-error role="alert" aria-labelledby="analysis-error-title" hidden>
+            <h2 id="analysis-error-title">We couldn’t load this career analysis</h2>
+            <p data-analysis-error-message>Please try again.</p>
+            <a class="ci-text-button" data-analysis-sign-in href="login.html" hidden>Sign in</a>
+            <a class="ci-text-button" data-analysis-profile-link href="profile.html" hidden>Return to Profile Setup</a>
+            <button class="ci-text-button" type="button" data-retry-analysis>Retry analysis</button>
+          </section>
+
+          <div class="ci-analysis-results" data-analysis-results aria-live="off"></div>
+        </section>
+      </div>
+    </main>
+  </div>
 </body>
 </html>

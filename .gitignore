@@ -147,3 +147,20 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 .streamlit/secrets.toml
+# Temporary browser profiles
+.create-gradient-profile/
+.login-measure-profile*/
+
+# Temporary login and viewport screenshots
+.login-*.png
+.viewport-review-*.png
+homepage-restored-nav-check.png
+
+# Temporary browser measurement page
+.login-measure.html
+# Unused Next.js frontend scaffold
+/frontend/src/
+/frontend/package.json
+/frontend/next.config.ts
+/frontend/tsconfig.json
+/frontend/tsconfig.tsbuildinfo

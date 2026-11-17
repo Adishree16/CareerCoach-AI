@@ -1,0 +1,141 @@
+{
+  "catalogue_name": "CareerCoach AI Career Interest Domain Mappings",
+  "version": "1.0.0",
+  "source_frontend": "frontend/pages/career-intelligence.html",
+  "scoring_component": {
+    "id": "career_interest",
+    "maximum_points": 15,
+    "neutral_option_behavior": "neutral_unavailable"
+  },
+  "scoring_policy": {
+    "exact_reviewed_match": "full_component_allocation",
+    "partial_reviewed_match": "explicit_partial_match_weight_only",
+    "confirmed_mismatch": "zero",
+    "missing_or_unreviewed_mapping": "unavailable",
+    "not_sure_yet": "neutral_unavailable",
+    "unavailable_component_redistribution": "Redistribute proportionally once across available Interest Alignment components so their effective allocations sum to 25 points.",
+    "both_components_unavailable": "interest_alignment_unavailable",
+    "partial_match_weight_note": "No partial-match weights are approved or configured."
+  },
+  "mapping_status_values": [
+    "mapped",
+    "partial",
+    "needs_review",
+    "unmapped",
+    "neutral"
+  ],
+  "options": [
+    {
+      "id": "software_development",
+      "label": "Software Development",
+      "mapping_status": "mapped",
+      "domain_ids": ["software_development"],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "One-to-one relationship explicitly approved by the user in Task 4B.3D. This records user approval and does not claim external evidence.",
+      "review_notes": "Explicitly reviewed and approved by the user in Task 4B.3D."
+    },
+    {
+      "id": "artificial_intelligence_machine_learning",
+      "label": "Artificial Intelligence & Machine Learning",
+      "mapping_status": "mapped",
+      "domain_ids": ["ai_and_machine_learning"],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "One-to-one relationship explicitly approved by the user in Task 4B.3D. This records user approval and does not claim external evidence.",
+      "review_notes": "Explicitly reviewed and approved by the user in Task 4B.3D."
+    },
+    {
+      "id": "data_science_analytics",
+      "label": "Data Science & Analytics",
+      "mapping_status": "mapped",
+      "domain_ids": ["data_science_and_analytics"],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "One-to-one relationship explicitly approved by the user in Task 4B.3D. This records user approval and does not claim external evidence.",
+      "review_notes": "Explicitly reviewed and approved by the user in Task 4B.3D."
+    },
+    {
+      "id": "cloud_computing_devops",
+      "label": "Cloud Computing & DevOps",
+      "mapping_status": "mapped",
+      "domain_ids": ["cloud_and_devops"],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "One-to-one relationship explicitly approved by the user in Task 4B.3D. This records user approval and does not claim external evidence.",
+      "review_notes": "Explicitly reviewed and approved by the user in Task 4B.3D."
+    },
+    {
+      "id": "cybersecurity",
+      "label": "Cybersecurity",
+      "mapping_status": "mapped",
+      "domain_ids": ["cybersecurity"],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "One-to-one relationship explicitly approved by the user in Task 4B.3D. This records user approval and does not claim external evidence.",
+      "review_notes": "Explicitly reviewed and approved by the user in Task 4B.3D."
+    },
+    {
+      "id": "it_infrastructure_networking",
+      "label": "IT Infrastructure & Networking",
+      "mapping_status": "mapped",
+      "domain_ids": ["it_infrastructure_and_networking"],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "One-to-one relationship explicitly approved by the user in Task 4B.3D. This records user approval and does not claim external evidence.",
+      "review_notes": "Explicitly reviewed and approved by the user in Task 4B.3D."
+    },
+    {
+      "id": "software_testing_quality_assurance",
+      "label": "Software Testing & Quality Assurance",
+      "mapping_status": "mapped",
+      "domain_ids": ["software_testing_and_quality_assurance"],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "One-to-one relationship explicitly approved by the user in Task 4B.3D. This records user approval and does not claim external evidence.",
+      "review_notes": "Explicitly reviewed and approved by the user in Task 4B.3D."
+    },
+    {
+      "id": "ui_ux_product_design",
+      "label": "UI/UX & Product Design",
+      "mapping_status": "mapped",
+      "domain_ids": ["ui_ux_and_product_design"],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "One-to-one relationship explicitly approved by the user in Task 4B.3D. This records user approval and does not claim external evidence.",
+      "review_notes": "Explicitly reviewed and approved by the user in Task 4B.3D."
+    },
+    {
+      "id": "product_project_management",
+      "label": "Product & Project Management",
+      "mapping_status": "mapped",
+      "domain_ids": ["product_and_project_management"],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "One-to-one relationship explicitly approved by the user in Task 4B.3D. This records user approval and does not claim external evidence.",
+      "review_notes": "Explicitly reviewed and approved by the user in Task 4B.3D."
+    },
+    {
+      "id": "business_technology_consulting",
+      "label": "Business & Technology Consulting",
+      "mapping_status": "mapped",
+      "domain_ids": ["business_and_technology_consulting"],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "One-to-one relationship explicitly approved by the user in Task 4B.3D. This records user approval and does not claim external evidence.",
+      "review_notes": "Explicitly reviewed and approved by the user in Task 4B.3D."
+    },
+    {
+      "id": "not_sure_yet",
+      "label": "Not Sure Yet",
+      "mapping_status": "neutral",
+      "domain_ids": [],
+      "partial_match_weight": null,
+      "source_references": [],
+      "mapping_rationale": "The frontend presents this as an uncertainty response, not a career domain. The approved scoring behavior is neutral and unavailable, not a negative match.",
+      "review_notes": "Treat this component as unavailable for proportional reallocation; do not assign zero as a mismatch.",
+      "neutral": true,
+      "scoring_availability": "unavailable"
+    }
+  ]
+}

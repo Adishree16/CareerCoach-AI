@@ -1,12 +1,14 @@
 const links = [
-  ['Home', '/index.html'], ['How it works', '/pages/how-it-works.html'],
-  ['Onboarding', '/pages/onboarding.html'], ['Dashboard', '/pages/dashboard.html'],
-  ['Career intelligence', '/pages/career-intelligence.html'], ['Skill assessment', '/pages/skill-assessment.html'],
-  ['Roadmap', '/pages/roadmap.html'], ['Accountability', '/pages/accountability.html'],
+  ['Home', '/index.html'],
+  ['Career Intelligence', '/pages/career-intelligence.html'],
+  ['Roadmap', '/pages/roadmap.html'],
 ];
 function siteHeader() {
   const current = location.pathname.endsWith('/') ? '/index.html' : location.pathname;
-  return `<header class="site-header"><nav class="site-nav" aria-label="Main navigation"><a class="site-brand" href="/index.html">CareerCoach AI</a><div class="site-links">${links.map(([label, href]) => `<a href="${href}"${current === href ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</div></nav></header>`;
+  const isRoadmap = document.body.classList.contains('roadmap-page');
+  const brandClass = isRoadmap ? 'site-brand site-brand-roadmap' : 'site-brand';
+  const trademark = isRoadmap ? '<sup>®</sup>' : '';
+  return `<header class="site-header"><nav class="site-nav" aria-label="Main navigation"><a class="${brandClass}" href="/index.html" aria-label="CareerCoach AI home"><svg class="site-brand-mark" viewBox="0 0 40 36" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="site-brand-bars-gradient" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7611eb"/><stop offset="1" stop-color="#8d24f5"/></linearGradient></defs><rect x="8" y="25" width="7" height="9" rx="1.8" fill="url(#site-brand-bars-gradient)"/><rect x="18" y="19" width="7" height="15" rx="1.8" fill="url(#site-brand-bars-gradient)"/><rect x="28" y="8" width="7" height="26" rx="1.8" fill="url(#site-brand-bars-gradient)"/></svg><span>CareerCoach AI${trademark}</span></a><div class="site-links">${links.map(([label, href]) => `<a href="${href}"${current === href ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</div></nav></header>`;
 }
 export function mountSiteShell() {
   document.querySelector('[data-site-header]')?.insertAdjacentHTML('afterbegin', siteHeader());

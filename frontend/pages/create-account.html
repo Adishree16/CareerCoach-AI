@@ -12,52 +12,32 @@
 </head>
 <body class="create-account-page">
   <main class="account-card" aria-labelledby="page-title">
-    <div class="card-shine" aria-hidden="true"></div>
     <header class="account-header">
       <a class="account-brand" href="../index.html" aria-label="CareerCoach AI home">
-        <svg class="brand-bars" viewBox="0 0 44 44" aria-hidden="true"><rect x="2" y="27" width="12" height="15" rx="3"/><rect x="17" y="16" width="12" height="26" rx="3"/><rect x="32" y="3" width="12" height="39" rx="3"/></svg>
-        <span>CareerCoach AI</span>
+        <svg class="brand-mark" viewBox="0 0 40 36" role="img" aria-label="CareerCoach AI growth mark" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="brand-bars-gradient" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7611eb"/><stop offset="1" stop-color="#8d24f5"/></linearGradient></defs><rect x="8" y="25" width="7" height="9" rx="1.8" fill="url(#brand-bars-gradient)"/><rect x="18" y="19" width="7" height="15" rx="1.8" fill="url(#brand-bars-gradient)"/><rect x="28" y="8" width="7" height="26" rx="1.8" fill="url(#brand-bars-gradient)"/></svg><span>CareerCoach AI</span>
       </a>
       <div class="heading-wrap">
-        <span class="sparkle sparkle-left" aria-hidden="true">✦</span>
         <h1 id="page-title">Create Your Account</h1>
-        <span class="sparkle sparkle-right" aria-hidden="true">✦</span>
       </div>
-      <p class="account-intro">Verify your email with OTP and set a password<br class="desktop-break"> to get started on your career journey.</p>
+      <p class="account-intro">Create your account and start building your personalized career path.</p>
     </header>
 
     <form id="account-form" novalidate>
       <div class="stepper">
-        <section class="step-section email-step" aria-labelledby="email-step-title">
+        <section class="step-section email-step" aria-label="Email address">
           <div class="step-number">1</div>
           <div class="step-content">
-            <h2 id="email-step-title">Email Verification</h2>
             <label for="email">Email Address <span aria-hidden="true">*</span></label>
             <div class="field-wrap">
               <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
               <input id="email" name="email" type="email" autocomplete="email" placeholder="Enter your email address" required>
             </div>
-            <div class="send-row"><button class="send-button" id="send-otp" type="button" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13"/></svg>Send OTP</button></div>
-            <div class="otp-block" id="otp-block" hidden>
-              <div class="otp-heading"><label for="otp-1">Enter OTP <span aria-hidden="true">*</span></label><span class="resend-label">Resend OTP in <button id="resend-otp" type="button" disabled>00:30</button></span></div>
-              <div class="otp-inputs" role="group" aria-label="Six digit verification code">
-                <input id="otp-1" name="otp-1" inputmode="numeric" autocomplete="one-time-code" maxlength="1" aria-label="OTP digit 1" required>
-                <input name="otp-2" inputmode="numeric" maxlength="1" aria-label="OTP digit 2" required>
-                <input name="otp-3" inputmode="numeric" maxlength="1" aria-label="OTP digit 3" required>
-                <input name="otp-4" inputmode="numeric" maxlength="1" aria-label="OTP digit 4" required>
-                <input name="otp-5" inputmode="numeric" maxlength="1" aria-label="OTP digit 5" required>
-                <input name="otp-6" inputmode="numeric" maxlength="1" aria-label="OTP digit 6" required>
-              </div>
-              <div class="send-row verify-otp-row"><button class="send-button" id="verify-otp" type="button" disabled>Verify OTP</button></div>
-            </div>
-            <p class="form-message" id="otp-message" role="status" aria-live="polite"></p>
           </div>
         </section>
 
-        <section class="step-section password-step" aria-labelledby="password-step-title">
+        <section class="step-section password-step" aria-label="Password details">
           <div class="step-number">2</div>
           <div class="step-content">
-            <h2 id="password-step-title">Set Password</h2>
             <label for="password">Password <span aria-hidden="true">*</span></label>
             <div class="field-wrap password-wrap">
               <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></svg>
@@ -81,9 +61,10 @@
           </div>
         </section>
       </div>
-      <button class="create-button" id="create-account-submit" type="submit" disabled>Create Account &amp; Continue <span aria-hidden="true">⟶</span></button>
+      <button class="create-button" id="create-account-submit" type="submit" disabled>Create Account</button>
       <p class="form-message submit-message" id="submit-message" role="status" aria-live="polite"></p>
     </form>
+    <p class="account-login-link">Already have an account? <a href="login.html">Log In</a></p>
   </main>
 </body>
 </html>
